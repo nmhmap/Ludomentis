@@ -1,4 +1,4 @@
-local cards = {
+{
 	[1] = {
 		name = "PiggyJingles";
 		rarity = "Legendary";
@@ -339,31 +339,3 @@ local cards = {
 		description = "";
 	},
 };
-
---[[
-	To add:
-		- Hipster (common)
-		- Clothing Designer (common)
-		- Forumer (common)
-		- Demanding SHer (common)
-		- OTer (common)
-		- Bad Scammer (common)
-		- Unsolvable Union (common)
-		- Spoiled OBCer (common)
-		- PBS Griefer (common)
-		- ODer (common)
-		- Speedhacker (common)
-		- Rocket Noob (common)
-		- Pretentious Swordsman (common)
-		- 
---]]
-
-
---preloads card images
-for _,v in pairs(cards) do
-	if v.image ~= nil and v.image > 1000 then
-		game:GetService("ContentProvider"):Preload("rbxassetid://"..v.image);
-	end
-end
-
-return cards;
