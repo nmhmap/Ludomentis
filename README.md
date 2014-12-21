@@ -1,2 +1,1 @@
-Ludomentis
-==========
+Ludomentis Information
