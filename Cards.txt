@@ -1,0 +1,369 @@
+local cards = {
+	[1] = {
+		name = "PiggyJingles";
+		rarity = "Legendary";
+		type = "minion";
+		image = 1;
+		attack = 6;
+		defense = 8;
+		energy = 40;
+		ability = {
+			ready = "played";
+			type = "kill";
+			target = "allenemy";
+			targetexception = "random";
+			exceptionamount = 1;
+		};
+		description = "Wipes out all enemy minions except 1.";
+	},
+	[2] = {
+		name = 'Murderer #1';
+		rarity = "Uncommon";
+		type = "minion";
+		image = 177801380;
+		attack = 2;
+		defense = 2;
+		energy = 16;
+		ability = {
+			ready = "played";
+			type = "kill";
+			target = "prompt";
+		};
+		description = "Instantly kills a Minion.";
+	},
+	[3] = {
+		name = 'Murderer #2';
+		rarity = "Uncommon";
+		type = "minion";
+		image = 177795559;
+		attack = 1;
+		defense = 3;
+		energy = 16;
+		ability = {
+			ready = "played";
+			type = "kill";
+			target = "prompt";
+		};
+		description = "Instantly kills a Minion.";
+	},
+	[4] = {
+		name = 'Murderer #3';
+		rarity = "Uncommon";
+		type = "minion";
+		image = 177800474;
+		attack = 3;
+		defense = 1;
+		energy = 16;
+		ability = {
+			ready = "played";
+			type = "kill";
+			target = "prompt";
+		};
+		description = "Instantly kills a Minion.";
+	},
+	[5] = {
+		name = "Merely";
+		rarity = "Epic";
+		type = "minion";
+		image = 177790740;
+		attack = 5;
+		defense = 3;
+		energy = 24;
+		ability = {};
+		description = "";
+	},
+	[6] = {
+		name = "Quenty";
+		rarity = "Epic";
+		type = "minion";
+		image = 177798807;
+		attack = 6;
+		defense = 2;
+		energy = 28;
+		ability = {};
+		description = "";
+	},
+	[7] = {
+		name = "Vorlias";
+		rarity = "Epic";
+		type = "minion";
+		image = 177795605;
+		attack = 4;
+		defense = 3;
+		energy = 15;
+		ability = {};
+		description = "";
+	},
+	[8] = {
+		name = "Troll";
+		rarity = "Common";
+		type = "minion";
+		image = 2;
+		attack = 1;
+		defense = 1;
+		energy = 5;
+		ability = {};
+		description = "";
+	},
+	[9] = {
+		name = "Spammer";
+		rarity = "Common";
+		type = "minion";
+		image = 2;
+		attack = 1;
+		defense = 1;
+		energy = 5;
+		ability = {};
+		description = "";
+	},
+	[10] = {
+		name = "Stalker";
+		rarity = "Common";
+		type = "minion";
+		image = 2;
+		attack = 0;
+		defense = 1;
+		energy = 5;
+		ability = {
+			taunt = true;
+		};
+		description = "";
+	},
+	[11] = {
+		name = "DoogleFox";
+		rarity = "Rare";
+		type = "minion";
+		image = 177787837;
+		attack = 4;
+		defense = 1;
+		energy = 22;
+		ability = {
+			ready = "played";
+			target = "prompt";
+			type = "heal";
+			damage = "custom";
+			damageamount = 2;		
+		};
+		description = "Heals a target for 2.";
+	},
+	[12] = {
+		name = "MightyWanderer";
+		rarity = "Epic";
+		type = "minion";
+		image = 184779649;
+		attack = 4;
+		defense = 5;
+		energy = 17;
+		ability = {};
+		description = "";
+	},
+	[13] = {
+		name = "Potato";
+		rarity = "Uncommon";
+		type = "weapon";
+		uses = 1;
+		attack = 4;
+		energy = 5;
+		ability = {};
+		description = "";
+	},
+	[14] = {
+		name = "Scythe";
+		rarity = "Rare";
+		type = "weapon";
+		attack = 4;
+		uses = 2;
+		energy = 10;
+		ability = {};
+	},
+	[15] = {
+		name = "Greed";
+		rarity = "Uncommon";
+		type = "ability";
+		uses = 1;
+		energy = 15;
+		ability = {
+			ready = "played";
+			origin = "randomenemy";
+			target = "randomenemy";
+		};
+	},
+	[16] = {
+		name = "Janthran";
+		rarity = "Rare";
+		type = "minion";
+		image = 186553221;
+		attack = 3;
+		defense = 1;
+		energy = 14;
+		ability = {
+			ready = "played"; 
+			target = "prompt"; 
+			type = "random";
+			damageamount = 1;
+		}
+	},
+	[17] = { 
+		name = "Noob";
+		rarity = "Common";
+		type = "minion";
+		image = 184665211;
+		attack = 1;
+		defense = 1;
+		energy = 5;
+		ability = {}
+	},
+	[18] = { 
+		name = "Guest";
+		rarity = "Common";
+		type = "minion";
+		image = 184665894;
+		attack = 1;
+		defense = 1;
+		energy = 5;
+		ability = {}
+	},
+	[19] = { 
+		name = "LMaDer";
+		rarity = "Common";
+		type = "minion";
+		image = 1;
+		attack = 2;
+		defense = 1;
+		energy = 6;
+		ability = {}
+	},
+	[20] = { 
+		name = "C&Ger";
+		rarity = "Common";
+		type = "minion";
+		image = 1;
+		attack = 1;
+		defense = 2;
+		energy = 7;
+		ability = {
+			taunt = true;			
+		};
+	},
+	[21] = { 
+		name = "Developer";
+		rarity = "Uncommon";
+		type = "minion";
+		image = 184666737;
+		attack = 2;
+		defense = 2;
+		energy = 8;
+		ability = {
+			ready = "first Hit";
+			type = "spawn";
+			id = 22;
+		};
+		description = "Spawns a new \"Game\" card";
+	},
+	[22] = {
+		name = "Game";
+		rarity = "Common";
+		type = "minion";
+		image = 1;
+		attack = 1;
+		defense = 1;
+		energy = 5;
+		ability = {};
+	},
+	[23] = { 
+		name = "Player";
+		rarity = "Common";
+		type = "minion";
+		image = 1;
+		attack = 1;
+		defense = 2;
+		energy = 6;
+		ability = {}
+	},
+	[24] = { 
+		name = "UristMcSparks";
+		rarity = "Rare";
+		type = "minion";
+		image = 184775146;
+		attack = 2;
+		defense = 3;
+		energy = 10;
+		ability = {}
+	},
+	[25] = { 
+		name = "oxcool1";
+		rarity = "Rare";
+		type = "minion";
+		image = 1;
+		attack = 2;
+		defense = 3;
+		energy = 14;
+		ability = {
+			charge = true;
+		}
+	},
+	[26] = {
+		name = "The0neThe0nly";
+		rarity = "Legendary";
+		type = "minion";
+		image = 1;
+		attack = 1;
+		defense = 1;
+		energy = 100;
+		ability = {
+			ready = "played";
+			wingame = true;
+		};
+		description = "Hacks to win the game.\nCurrent Form:\nXThe0neThe0wnlyX";
+	},
+	[27] = {
+		name = "MrHistory";
+		rarity = "Uncommon";
+		type = "minion";
+		image = 1;
+		attack = 3;
+		defense = 1;
+		energy = 10;
+		ability = {};
+		description = "";
+	},
+	[28] = {
+		name = "JohnMH";
+		rarity = "Uncommon";
+		type = "minion";
+		image = 186554193;
+		attack = 2;
+		defense = 3;
+		energy = 10;
+		ability = {};
+		description = "";
+	},
+};
+
+--[[
+	To add:
+		- Hipster (common)
+		- Clothing Designer (common)
+		- Forumer (common)
+		- Demanding SHer (common)
+		- OTer (common)
+		- Bad Scammer (common)
+		- Unsolvable Union (common)
+		- Spoiled OBCer (common)
+		- PBS Griefer (common)
+		- ODer (common)
+		- Speedhacker (common)
+		- Rocket Noob (common)
+		- Pretentious Swordsman (common)
+		- 
+--]]
+
+
+--preloads card images
+for _,v in pairs(cards) do
+	if v.image ~= nil and v.image > 1000 then
+		game:GetService("ContentProvider"):Preload("rbxassetid://"..v.image);
+	end
+end
+
+return cards;
