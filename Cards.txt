@@ -242,7 +242,7 @@
 		"defense" : 2,
 		"energy" : 7,
 		"ability" : {
-			"taunt" : true,		
+			"taunt" : true	
 		}
 	},
 	{ 
