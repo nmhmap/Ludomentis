@@ -33,7 +33,7 @@ Weapon:
 	"description" : ""
 }
 
-ability:
+Ability:
 ------------
 {
 	"name" : "",
@@ -56,7 +56,7 @@ defense = how much damage a card can take
 energy = how much it takes to play a card (should be around attack + defense * 7.5)
 ability = what will happen when ability is fired
 ready = when the ability is fired
-... = other arguments to the ability
+... = other arguments to the ability (See Ability guidelines)
 uses = how many times the weapon will be available or ready for use
 description = the inner text describing the ability
 
