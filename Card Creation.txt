@@ -4,6 +4,8 @@
 =============================================
 
 
+Minion:
+------------
 {
 	"name" : "",
 	"rarity" : "",
@@ -17,6 +19,46 @@
 	},
 	"description" : ""
 }
+
+Weapon:
+------------
+{
+	"name" : "",
+	"rarity" : "",
+	"image" : 1,
+	"attack" : 1, --optional
+	"defense" : 1, --optional
+	"energy" : 1,
+	"uses" : 1,
+	"description" : ""
+}
+
+ability:
+------------
+{
+	"name" : "",
+	"rarity" : "",
+	"image" : 1,
+	"energy" : 1,
+	"ability" : {
+		"ready" : "",
+		...
+	},
+	"description" : ""
+}
+
+
+name = The card's defining name
+rarity = what image of the card will be used
+image = the card's inner image
+attack = how much damage a card does
+defense = how much damage a card can take
+energy = how much it takes to play a card (should be around attack + defense * 7.5)
+ability = what will happen when ability is fired
+ready = when the ability is fired
+... = other arguments to the ability
+uses = how many times the weapon will be available or ready for use
+description = the inner text describing the ability
 
 
 
@@ -57,3 +99,4 @@
 [ability.targetexception] (ignores a certain card in the affected)
  - "random" (picks random out of affected)
  - "prompt" (prompts player)
+
