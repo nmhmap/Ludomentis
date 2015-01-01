@@ -1,5 +1,12 @@
 
-
+[0.0.0.124]
+- Completely new lobby
+- Deck screen (deck list, dropdown menus, search)
+- Play screen (ranked, practice, campaign, friends)
+- Home screen (leaderboards (overall, wins, losses), changelogs, correct resizing of text and versions in the changelogs)
+- Highlighting of current screen over buttons
+- Mouse over selector tween
+- Optimizations to sending to the player
 
 
 [0.0.0.112]
