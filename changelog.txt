@@ -2,7 +2,10 @@
 [0.0.0.112]
 - Converted 2 places (for ai and players) into 1 (still looking around for some bugs).
 - New background to lobby.
-- Moved card information from modulescript to [url=https://github.com/Aceeri/Ludomentis/blob/master/Cards.txt]github[/url] so it is easier to modify. 
+- Moved card information from modulescript to github.
 - Made lobby button code cleaner
 - Fixed mute/volume slider to fit all screens
 - Fixed an interpolation bug
+
+[0.0.0.141]
+- New lobby ui
