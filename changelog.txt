@@ -1,4 +1,14 @@
 
+[0.0.0.142]
+- Web server for matchmaking. (Much faster now :D)
+- Ranked screen.
+- Lobby button highlighting/selecting fixes.
+- Fixed changelog resizing
+- Fixed getting arena gametypes
+- Fixed chat in arena when playing against other player
+- Fixed parent checker for visibility
+
+
 [0.0.0.124]
 - Completely new lobby
 - Deck screen (deck list, dropdown menus, search)
