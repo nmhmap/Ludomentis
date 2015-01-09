@@ -140,16 +140,15 @@ var WebServer = function() {
 				if (self.confirm[player].players[0].id == req.params.id) {
 					self.confirm[player].players[0].confirm = true;
 					console.log(self.confirm[player].players[0].name + " confirmed.");
-					break;
 				} else if (self.confirm[player].players[1].id == req.params.id) {
 					self.confirm[player].players[1].confirm = true;
 					console.log(self.confirm[player].players[1].name + " confirmed.");
-					break;
 				}
 				console.log(self.confirm[player].players[0].confirm && self.confirm[player].players[1].confirm);
 				if (self.confirm[player].players[0].confirm && self.confirm[player].players[1].confirm) {
 					self.arenas.push({ arenaid : self.confirm[player].id, type : self.confirm[player].type });
 					console.log("Pushing new arena(" + self.confirm[player].id + ") to array.");
+					break;
 				}
 			}
 			res.send(self.confirm[player]);
