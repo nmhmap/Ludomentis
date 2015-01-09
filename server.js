@@ -61,8 +61,8 @@ var WebServer = function() {
 		self.app.use('/img', express.static(__dirname + '/img'));
 
 
-		//client -> server (join queue) -> web server (/:gametype/join)
-		//client -> server (leave queue) -> web server (/:gametype/leave/:playerid)
+		//client -> server (join queue) -> web server (/join)
+		//client -> server (leave queue) -> web server (/leave/:playerid)
 		//server (ask for confirm queue) -> web server (/confirm) -> server (extracts placeid from confirm)
 		//server (confirm player) -> web server (/confirm/add/:playerid)
 		//server (wait until both confirmed)
@@ -112,8 +112,8 @@ var WebServer = function() {
 	    					queue.splice(p1, 1);
 	    					queue.splice(p2, 1);
 	    				}
-	    				self.confirm.push({ players : [ player1, player2 ], id : player1.placeid, type : queue });
-						console.log("Matching " + player1.name + ", " + player2.name + " in arena/" + req.params.type + ": " + player1.placeid);
+	    				self.confirm.push({ players : [ player1, player2 ], id : player1.placeid, type : player1.type });
+						console.log("Matching " + player1.name + ", " + player2.name + " in arena/" + player1.type + ": " + player1.placeid);
 	    			}
 	    		}
 	    	}
@@ -126,7 +126,7 @@ var WebServer = function() {
 			for (player = 0; player < queue.length; player++){
 				console.log("playerid: ", queue[player].id, req.params.id);
 				if (queue[player].id == req.params.id) {
-					console.log(queue[player].name + " has left(queue/" + req.params.type + ")");
+					console.log(queue[player].name + " has left(queue/" + queue[player].type + ")");
 					queue.splice(player, 1);
 					break;
 				}
@@ -155,11 +155,11 @@ var WebServer = function() {
 		});
 		
 		//Remove from confirm queue
-		self.app.get('/confirm/remove/:id/', function(req, res) {
+		self.app.get('/confirm/remove/:id', function(req, res) {
 			for (player = 0; player < self.confirm.length; player++) {
 				if (self.confirm[player][0].id == req.params.id || self.confirm[player][1].id == req.params.id) {
-					self.confirm.splice(player);
-					console.log("Removing from confirmation queue(" + req.params.id + ")");
+					console.log("Removing from confirmation queue(" + self.confirm[player][0].name + " & " + self.confirm[player][1].name + ")");
+					self.confirm.splice(player, 1);
 				}
 			}
 		});
