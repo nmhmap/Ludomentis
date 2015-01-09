@@ -1,5 +1,4 @@
 #!/bin/env node
-//  OpenShift sample Node application
 var express = require('express');
 var fs      = require('fs');
 var qs      = require('querystring');
@@ -7,15 +6,12 @@ var qs      = require('querystring');
 var WebServer = function() {
 
     var self = this;
-    //var starting = true;
 
     self.setupVariables = function() {
 
         self.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
         self.port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
         self.queue = [];
-    	self.queue["ranked"] = [];
-    	self.queue["practice"] = [];
     	self.confirm = [];
     	self.arenas = [];
 
@@ -24,33 +20,6 @@ var WebServer = function() {
             self.ipaddress = "127.0.0.1";
         };
     };
-
-    /*self.toggleQueue = function(queue, playerinfo){
-    	//check if server is asking for confirmation
-    	for (i = 0; i < self.confirmQueue[queue].length; i++){
-    		for (j = 0; j < self.confirmQueue[queue][i].length; j++){
-	    		if (self.confirmQueue[queue][i][j].id == playerinfo.id) {
-	    			return "confirmation";
-	    		}
-	    	}
-    	}
-
-    	//check if player is already in the queue
-    	for (i = 0; i < self.queue[queue].length; i ++){
-    		if (self.queue[queue][i].id == playerinfo.id) {
-    			//remove from queue
-    			console.log(playerinfo.name + " removed from queue/" + queue);
-    			self.queue[queue].splice(i, 1);
-    			return "removed";
-    		}
-    	}
-
-    	//add to queue
-    	console.log(playerinfo.name + " added to queue/" + queue + " ( rank: " + playerinfo.rank + " )");
-    	self.queue[queue].push(playerinfo);
-    	self.sortQueue(queue);
-    	return "added";
-    }*/
 
     self.populateCache = function() {
         if (typeof self.zcache === "undefined") {
@@ -100,20 +69,20 @@ var WebServer = function() {
 		//server (teleport players to arena)
 		//arena (both players joined) -> web server (/confirm/remove/:playerid)
 	
-		//root url (http://aceeri.tk) || (http://robloxpiggyjingles.rhcloud.com)
+		//root url (http://trivector.tk) || (http://aceeri-ludomentis.rhcloud.com/)
+
 		//Joining queue
-		self.app.post('/:type/join', function(req, res) {
+		self.app.post('/join', function(req, res) {
 			var inQueue = false;
-			if (self.queue[req.params.type] == null) {
-				self.queue[req.params.type] = [];
-				self.confirm[req.params.type] = [];
-			}
-			var queue = self.queue[req.params.type];
+			var queue = self.queue;
 
 			//Check if in queue
 			for (player = 0; player < queue.length; player++) {
-				if (queue[player].id == req.body.id) {
+				if (queue[player].type == req.body.type && queue[player].id == req.body.id) {
 					inQueue = true;
+					break;
+				} else if (queue[player].type != req.body.type) {
+					queue.splice(player, 1);
 					break;
 				}
 			}
@@ -121,7 +90,7 @@ var WebServer = function() {
 
 			//Adds to queue
 			if (!inQueue) {
-				queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, confirm : false, placeid : req.body.placeid });
+				queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.params.type, confirm : false, placeid : req.body.placeid });
 				console.log(req.body.name + " has joined(queue/" + req.params.type + ")");
 			}
 
@@ -132,7 +101,7 @@ var WebServer = function() {
 	    		for (p2 = 0; p2 < queue.length; p2 ++) {
 					var player1 = queue[p1];
 					var player2 = queue[p2];
-	    			if (player1.id != player2.id && player1.rank + 50 > player2.rank - 50) {
+	    			if (player1.type == player2.type && player1.id != player2.id && player1.rank + 50 > player2.rank - 50) {
 	    				if (p1 > p2) {
 	    					queue.splice(p1, 1);
 	    					queue.splice(p2, 1);
@@ -149,8 +118,8 @@ var WebServer = function() {
 		});
 
 		//Leaving queue
-		self.app.get('/:type/leave/:id', function(req, res) {
-			var queue = self.queue[req.params.type];
+		self.app.get('/leave/:id', function(req, res) {
+			var queue = self.queue;
 			for (player = 0; player < queue.length; player++){
 				console.log("playerid: ", queue[player].id, req.params.id);
 				if (queue[player].id == req.params.id) {
@@ -214,7 +183,6 @@ var WebServer = function() {
         self.populateCache();
         self.setupTerminationHandlers();
         self.initializeServer();
-        //starting = false;
     };
 
     self.start = function() {
