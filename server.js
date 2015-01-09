@@ -157,6 +157,7 @@ var WebServer = function() {
 		//Remove from confirm queue
 		self.app.get('/confirm/remove/:id', function(req, res) {
 			for (player = 0; player < self.confirm.length; player++) {
+				console.log("id:", self.confirm[player].players[0].id);
 				if (self.confirm[player].players[0].id == req.params.id || self.confirm[player].players[1].id == req.params.id) {
 					console.log("Removing from confirmation queue(" + self.confirm[player].players[0].name + " & " + self.confirm[player].players[1].name + ")");
 					self.confirm.splice(player, 1);
