@@ -163,6 +163,7 @@ var WebServer = function() {
 					self.confirm.splice(player, 1);
 				}
 			}
+			res.send("");
 		});
 
 		//Get confirm queue
