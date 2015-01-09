@@ -146,6 +146,7 @@ var WebServer = function() {
 					console.log(self.confirm[player].players[1].name + " confirmed.");
 					break;
 				}
+				console.log(self.confirm[player].players[0].confirm && self.confirm[player].players[1].confirm);
 				if (self.confirm[player].players[0].confirm && self.confirm[player].players[1].confirm) {
 					self.arenas.push({ arenaid : self.confirm[player].id, type : self.confirm[player].type });
 					console.log("Pushing new arena(" + self.confirm[player].id + ") to array.");
