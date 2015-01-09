@@ -79,9 +79,12 @@ var WebServer = function() {
 			//Check if in queue
 			for (player = 0; player < queue.length; player++) {
 				if (queue[player].type == req.body.type && queue[player].id == req.body.id) {
+					console.log("Already queued", queue[player].name);
 					inQueue = true;
 					break;
 				} else if (queue[player].type != req.body.type) {
+					inQueue = false;
+					console.log("Already queued", queue[player].name, "(different type)");
 					queue.splice(player, 1);
 					break;
 				}
