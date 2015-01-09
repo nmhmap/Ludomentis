@@ -94,7 +94,7 @@ var WebServer = function() {
 			//Adds to queue
 			if (!inQueue) {
 				queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.body.type, confirm : false, placeid : req.body.placeid });
-				console.log(req.body.name + " has joined(queue/" + req.params.type + ")");
+				console.log(req.body.name + " has joined(queue/" + req.body.type + ")");
 			}
 
 
@@ -157,8 +157,8 @@ var WebServer = function() {
 		//Remove from confirm queue
 		self.app.get('/confirm/remove/:id', function(req, res) {
 			for (player = 0; player < self.confirm.length; player++) {
-				if (self.confirm[player][0].id == req.params.id || self.confirm[player][1].id == req.params.id) {
-					console.log("Removing from confirmation queue(" + self.confirm[player][0].name + " & " + self.confirm[player][1].name + ")");
+				if (self.confirm[player].players[0].id == req.params.id || self.confirm[player].players[1].id == req.params.id) {
+					console.log("Removing from confirmation queue(" + self.confirm[player].players[0].name + " & " + self.confirm[player].players[1].name + ")");
 					self.confirm.splice(player, 1);
 				}
 			}
