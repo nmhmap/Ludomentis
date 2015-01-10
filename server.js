@@ -6,6 +6,7 @@ var qs      = require('querystring');
 var WebServer = function() {
 
     var self = this;
+    var counter = 0;
 
     self.setupVariables = function() {
 
@@ -73,11 +74,11 @@ var WebServer = function() {
 
 		//Joining queue
 		self.app.post('/join', function(req, res) {
-			var inQueue = false;
+			//var inQueue = false;
 			var queue = self.queue;
 
 			//Check if in queue
-			for (player = 0; player < queue.length; player++) {
+			/*for (player = 0; player < queue.length; player++) {
 				if (queue[player].type == req.body.type && queue[player].id == req.body.id) {
 					//console.log("Already queued", queue[player].name);
 					inQueue = true;
@@ -88,35 +89,38 @@ var WebServer = function() {
 					queue.splice(player, 1);
 					break;
 				}
-			}
+			}*/
 
 
 			//Adds to queue
-			if (!inQueue) {
+			//if (!inQueue) {
 				queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.body.type, confirm : false, placeid : req.body.placeid });
+				counter += 1;
 				//console.log(req.body.name + " has joined(queue/" + req.body.type + ")");
-			}
+			//}
 
 
 			//Removes from queue and adds to confirmation
-	    	console.log("Sorting", queue.length, "players");
-	    	for (p1 = 0; p1 < queue.length; p1++) {
-	    		for (p2 = 0; p2 < queue.length; p2 ++) {
-					var player1 = queue[p1];
-					var player2 = queue[p2];
-	    			if (player1.type == player2.type && player1.id != player2.id && player1.rank + 50 > player2.rank - 50) {
-	    				if (p1 > p2) {
-	    					queue.splice(p1, 1);
-	    					queue.splice(p2, 1);
-	    				} else {
-	    					queue.splice(p2, 1);
-	    					queue.splice(p1, 1);
-	    				}
-	    				self.confirm.push({ players : [ player1, player2 ], id : player1.placeid, type : player1.type });
-						console.log("Matching " + player1.name + ", " + player2.name + " in arena/" + player1.type + ": " + player1.placeid);
-	    			}
-	    		}
-	    	}
+			if (counter % 2 == 0) {
+		    	console.log("Sorting", queue.length, "players");
+		    	for (p1 = 0; p1 < queue.length; p1++) {
+		    		for (p2 = 0; p2 < queue.length; p2 ++) {
+						var player1 = queue[p1];
+						var player2 = queue[p2];
+		    			if (player1.type == player2.type && player1.id != player2.id && player1.rank + 50 > player2.rank - 50) {
+		    				if (p1 > p2) {
+		    					queue.splice(p1, 1);
+		    					queue.splice(p2, 1);
+		    				} else {
+		    					queue.splice(p2, 1);
+		    					queue.splice(p1, 1);
+		    				}
+		    				self.confirm.push({ players : [ player1, player2 ], id : player1.placeid, type : player1.type });
+							console.log("Matching " + player1.name + ", " + player2.name + " in arena/" + player1.type + ": " + player1.placeid);
+		    			}
+		    		}
+		    	}
+		    }
 			res.send("added");
 		});
 
@@ -127,6 +131,7 @@ var WebServer = function() {
 				if (queue[player].id == req.params.id) {
 					//console.log(queue[player].name + " has left(queue/" + queue[player].type + ")");
 					queue.splice(player, 1);
+					counter -= 1;
 					break;
 				}
 			}
@@ -187,9 +192,15 @@ var WebServer = function() {
 			res.send(self.arenas);
 		});
 
+		//get queue
 		self.app.get('/queue', function(req, res){
 			res.send(self.queue);
 		});
+
+		//get amount of players added to queue
+		self.app.get('/counter', function(req, res){
+        	res.send(counter);
+        })
 		
 		//Send index.html if root url
         self.app.get('/', function(req, res) {
