@@ -144,7 +144,6 @@ var WebServer = function() {
 					self.confirm[player].players[1].confirm = true;
 					console.log(self.confirm[player].players[1].name + " confirmed.");
 				}
-				console.log(self.confirm[player].players[0].confirm && self.confirm[player].players[1].confirm);
 				if (self.confirm[player].players[0].confirm && self.confirm[player].players[1].confirm) {
 					self.arenas.push({ arenaid : self.confirm[player].id, type : self.confirm[player].type });
 					console.log("Pushing new arena(" + self.confirm[player].id + ") to array.");
@@ -157,7 +156,6 @@ var WebServer = function() {
 		//Remove from confirm queue
 		self.app.get('/confirm/remove/:id', function(req, res) {
 			for (player = 0; player < self.confirm.length; player++) {
-				console.log("id:", self.confirm[player].players[0].id);
 				if (self.confirm[player].players[0].id == req.params.id || self.confirm[player].players[1].id == req.params.id) {
 					console.log("Removing from confirmation queue(" + self.confirm[player].players[0].name + " & " + self.confirm[player].players[1].name + ")");
 					self.confirm.splice(player, 1);
@@ -176,7 +174,8 @@ var WebServer = function() {
 		self.app.get('/arenas/remove/:id', function(req, res){
 			var found = false;
 			for (i = 0; i < self.arenas; i++){
-				if (self.arenas[i].arenaid == req.params.id){
+				console.log(self.arenas[i].arenaid, req.params.id)
+				if (self.arenas[i].arenaid == req.params.id) {
 					self.arenas.splice(i, 1);
 					var found = true;
 					break;
