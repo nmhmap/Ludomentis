@@ -109,8 +109,8 @@ var WebServer = function() {
 	    					queue.splice(p1, 1);
 	    					queue.splice(p2, 1);
 	    				} else {
-	    					queue.splice(p1, 1);
 	    					queue.splice(p2, 1);
+	    					queue.splice(p1, 1);
 	    				}
 	    				self.confirm.push({ players : [ player1, player2 ], id : player1.placeid, type : player1.type });
 						console.log("Matching " + player1.name + ", " + player2.name + " in arena/" + player1.type + ": " + player1.placeid);
