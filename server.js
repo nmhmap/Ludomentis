@@ -136,10 +136,7 @@ var WebServer = function() {
 
 		//Add to confirm queue
 		self.app.get('/confirm/add/:id', function(req, res) {
-			for (player = 0; self.confirm.length; player++) {
-				console.log(self.confirm);
-				console.log(self.confirm[player]);
-				console.log(player);
+			for (player = 0; player < self.confirm.length; player++) {
 				if (self.confirm[player].players[0].id == req.params.id) {
 					self.confirm[player].players[0].confirm = true;
 					console.log(self.confirm[player].players[0].name + " confirmed.");
