@@ -1,4 +1,14 @@
 
+[0.0.0.162]
+- Fixed and optimized web server
+- Added News to home screen
+- Added practice screen
+- Added Achievements to profile screen
+- Fixed a few problems with the arena
+- Changed some rules with the arena (Must kill all cards on enemy field to attack avatar)
+- Fixed some play/deck screen resolution problems
+- Arena now properly teleports you back to the lobby if a player leaves or the game ends
+
 [0.0.0.142]
 - Web server for matchmaking. (Much faster now :D)
 - Ranked screen.
