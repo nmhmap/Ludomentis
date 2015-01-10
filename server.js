@@ -79,12 +79,12 @@ var WebServer = function() {
 			//Check if in queue
 			for (player = 0; player < queue.length; player++) {
 				if (queue[player].type == req.body.type && queue[player].id == req.body.id) {
-					console.log("Already queued", queue[player].name);
+					//console.log("Already queued", queue[player].name);
 					inQueue = true;
 					break;
 				} else if (queue[player].type != req.body.type && queue[player].id == req.body.id) {
 					inQueue = false;
-					console.log("Already queued", queue[player].name, "(different type)");
+					//console.log("Already queued", queue[player].name, "(different type)");
 					queue.splice(player, 1);
 					break;
 				}
@@ -94,7 +94,7 @@ var WebServer = function() {
 			//Adds to queue
 			if (!inQueue) {
 				queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.body.type, confirm : false, placeid : req.body.placeid });
-				console.log(req.body.name + " has joined(queue/" + req.body.type + ")");
+				//console.log(req.body.name + " has joined(queue/" + req.body.type + ")");
 			}
 
 
@@ -126,7 +126,7 @@ var WebServer = function() {
 			for (player = 0; player < queue.length; player++){
 				console.log("playerid: ", queue[player].id, req.params.id);
 				if (queue[player].id == req.params.id) {
-					console.log(queue[player].name + " has left(queue/" + queue[player].type + ")");
+					//console.log(queue[player].name + " has left(queue/" + queue[player].type + ")");
 					queue.splice(player, 1);
 					break;
 				}
@@ -146,7 +146,7 @@ var WebServer = function() {
 				}
 				if (self.confirm[player].players[0].confirm && self.confirm[player].players[1].confirm) {
 					self.arenas.push({ arenaid : self.confirm[player].id, type : self.confirm[player].type });
-					console.log("Pushing new arena(" + self.confirm[player].id + ") to array.");
+					//console.log("Pushing new arena(" + self.confirm[player].id + ") to array.");
 					break;
 				}
 			}
@@ -157,7 +157,7 @@ var WebServer = function() {
 		self.app.get('/confirm/remove/:id', function(req, res) {
 			for (player = 0; player < self.confirm.length; player++) {
 				if (self.confirm[player].players[0].id == req.params.id || self.confirm[player].players[1].id == req.params.id) {
-					console.log("Removing from confirmation queue(" + self.confirm[player].players[0].name + " & " + self.confirm[player].players[1].name + ")");
+					//console.log("Removing from confirmation queue(" + self.confirm[player].players[0].name + " & " + self.confirm[player].players[1].name + ")");
 					self.confirm.splice(player, 1);
 				}
 			}
@@ -174,7 +174,6 @@ var WebServer = function() {
 		self.app.get('/arenas/remove/:id', function(req, res){
 			var found = false;
 			for (i = 0; i < self.arenas.length; i++) {
-				console.log(self.arenas[i].arenaid, parseInt(req.params.id));
 				if (self.arenas[i].arenaid == parseInt(req.params.id)) {
 					self.arenas.splice(i, 1);
 					var found = true;
