@@ -96,7 +96,7 @@ var WebServer = function() {
 			//if (!inQueue) {
 				queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.body.type, confirm : false, placeid : req.body.placeid });
 				counter += 1;
-				//console.log(req.body.name + " has joined(queue/" + req.body.type + ")");
+				console.log(req.body.name + " has joined(queue/" + req.body.type + ")");
 			//}
 
 
@@ -143,14 +143,14 @@ var WebServer = function() {
 			for (player = 0; player < self.confirm.length; player++) {
 				if (self.confirm[player].players[0].id == req.params.id) {
 					self.confirm[player].players[0].confirm = true;
-					//console.log(self.confirm[player].players[0].name + " confirmed.");
+					console.log(self.confirm[player].players[0].name + " confirmed.");
 				} else if (self.confirm[player].players[1].id == req.params.id) {
 					self.confirm[player].players[1].confirm = true;
-					//console.log(self.confirm[player].players[1].name + " confirmed.");
+					console.log(self.confirm[player].players[1].name + " confirmed.");
 				}
 				if (self.confirm[player].players[0].confirm && self.confirm[player].players[1].confirm) {
 					self.arenas.push({ arenaid : self.confirm[player].id, type : self.confirm[player].type });
-					//console.log("Pushing new arena(" + self.confirm[player].id + ") to array.");
+					console.log("Pushing new arena(" + self.confirm[player].id + ") to array.");
 					break;
 				}
 			}
