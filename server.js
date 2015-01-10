@@ -174,8 +174,8 @@ var WebServer = function() {
 		self.app.get('/arenas/remove/:id', function(req, res){
 			var found = false;
 			for (i = 0; i < self.arenas.length; i++) {
-				console.log(self.arenas[i].arenaid, req.params.id);
-				if (self.arenas[i].arenaid == req.params.id) {
+				console.log(self.arenas[i].arenaid, parseInt(req.params.id));
+				if (self.arenas[i].arenaid == parseInt(req.params.id)) {
 					self.arenas.splice(i, 1);
 					var found = true;
 					break;
