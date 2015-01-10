@@ -176,6 +176,10 @@ var WebServer = function() {
 		self.app.get('/arenas', function(req, res) {
 			res.send(self.arenas);
 		});
+
+		self.app.get'/queue', function(req, res){
+			res.send(self.queue);
+		}
 		
 		//Send index.html if root url
         self.app.get('/', function(req, res) {
