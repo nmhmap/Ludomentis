@@ -107,7 +107,7 @@ var WebServer = function() {
 		    		for (p2 = 0; p2 < queue.length; p2 ++) {
 						var player1 = queue[p1];
 						var player2 = queue[p2];
-		    			if (player1.type == player2.type && player1.id != player2.id && (player1.rank + 50 > player2.rank - 50 || player2.rank + 50 > player1.rank - 50)) {
+		    			if (player1.type == player2.type && player1.id != player2.id && (player1.rank + 50 > player2.rank && player2.rank + 50 > player1.rank) {
 		    				if (p1 > p2) {
 		    					queue.splice(p1, 1);
 		    					queue.splice(p2, 1);
