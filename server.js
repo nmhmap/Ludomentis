@@ -124,7 +124,6 @@ var WebServer = function() {
 		self.app.get('/leave/:id', function(req, res) {
 			var queue = self.queue;
 			for (player = 0; player < queue.length; player++){
-				console.log("playerid: ", queue[player].id, req.params.id);
 				if (queue[player].id == req.params.id) {
 					//console.log(queue[player].name + " has left(queue/" + queue[player].type + ")");
 					queue.splice(player, 1);
