@@ -172,14 +172,25 @@ var WebServer = function() {
 			res.send(self.confirm);
 		});
 		
+		//Remove arena
+		self.app.get('/arenas/remove/:id', function(req, res){
+			for (i = 0; i < self.arenas; i++){
+				if (self.arenas[i].arenaid == req.params.id){
+					self.arenas.splice(i, 1);
+					break;
+				}
+			}
+			res.send("");
+		});
+
 		//Get arenas
 		self.app.get('/arenas', function(req, res) {
 			res.send(self.arenas);
 		});
 
-		self.app.get'/queue', function(req, res){
+		self.app.get('/queue', function(req, res){
 			res.send(self.queue);
-		}
+		});
 		
 		//Send index.html if root url
         self.app.get('/', function(req, res) {
