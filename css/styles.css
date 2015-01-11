@@ -8,7 +8,7 @@ body {
 	font-family: "RobotoCondensed";
 }
 
-div.header {
+.header {
 	background-color: #989898;
 	width: 110%;
 	height: 120px;
