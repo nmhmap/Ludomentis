@@ -10,7 +10,9 @@ body {
 
 div.header {
 	background-color: #989898;
-	width: 100%;
-	height: 40px;
+	width: 105%;
+	height: 45px;
+	margin-left: -7px;
+	margin-top: -7px;
 	margin: 0px;
 }
