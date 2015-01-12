@@ -94,6 +94,7 @@ var WebServer = function() {
 
 			//Adds to queue
 			//if (!inQueue) {
+				console.log("test");
 				queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.body.type, confirm : false, placeid : req.body.placeid });
 				counter += 1;
 				console.log(req.body.name + " has joined(queue/" + req.body.type + ")");
