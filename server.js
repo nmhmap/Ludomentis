@@ -219,6 +219,7 @@ var WebServer = function() {
     self.start = function() {
         self.app.listen(self.port, self.ipaddress, function() {
             console.log("Server online.");
+            console.log("testing");
         });
     };
 
