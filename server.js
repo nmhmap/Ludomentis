@@ -169,7 +169,7 @@ var WebServer = function() {
 		self.app.get('/confirm/:id', function(req, res) {
 			console.log("Requesting confirmation qeueue");
 			console.log(parseInt(req.params.id));
-			console.log(self.confirm[parseInt(req.params.id))
+			console.log(self.confirm[parseInt(req.params.id)]);
 			res.send(self.confirm[parseInt(req.params.id)]);
 
 			/*var p;
