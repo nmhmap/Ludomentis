@@ -115,12 +115,13 @@ var WebServer = function() {
 				}
 			}
 
-			if (self.confirm[req.params.id] && self.confirm[req.params.id].players) {}
+			if (self.confirm[req.params.id] && self.confirm[req.params.id].players) {
 				var other = (self.confirm[req.params.id].players[0].id == req.params.id && self.confirm[req.params.id].players[1]) || (self.confirm[req.params.id].players[1].id == req.params.id && self.confirm[req.params.id].players[0]);
 				self.queue.push(other);
 				self.confirm[other.id] = null;
 				self.confirm[req.params.id] = null;
 			}
+
 			res.send("removed");
 		});
 
