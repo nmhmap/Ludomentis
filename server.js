@@ -227,7 +227,6 @@ var WebServer = function() {
 
     self.initialize = function() {
         self.setupVariables();
-        self.populateCache();
         self.setupTerminationHandlers();
         self.initializeServer();
     };
