@@ -105,6 +105,7 @@ var WebServer = function() {
 		//Leaving queue
 		self.app.get('/leave/:id', function(req, res) {
 			var queue = self.queue;
+			req.params.id = parseInt(req.params.id);
 			for (player = 0; player < queue.length; player++){
 				if (queue[player].id == req.params.id) {
 					console.log(queue[player].name + " has left(queue/" + queue[player].type + ")");
@@ -113,6 +114,9 @@ var WebServer = function() {
 					break;
 				}
 			}
+
+			self.queue.push((self.confirm[req.params.id].players[0].id == req.params.id && self.confirm[req.params.id].players[1]) || (self.confirm[req.params.id].players[1].id == req.params.id && self.confirm[req.params.id].players[0]));
+			self.confirm[req.params.id] = null;
 			res.send("removed");
 		});
 
