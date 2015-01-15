@@ -127,7 +127,8 @@ var WebServer = function() {
 
 		//Add to confirm queue
 		self.app.get('/confirm/add/:id', function(req, res) {
-			var c = self.confirm[parseInt(req.params.id)];
+			req.params.id = parseInt(req.params.id);
+			var c = self.confirm[req.params.id];
 
 			if (c.players[0].id == req.params.id){
 				c.players[0].confirm = true;
@@ -137,6 +138,8 @@ var WebServer = function() {
 
 			if (c.players[0].confirm && c.players[1].confirm){
 				self.arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type };
+				var other = (self.confirm[req.params.id].players[0].id == req.params.id && self.confirm[req.params.id].players[1]) || (self.confirm[req.params.id].players[1].id == req.params.id && self.confirm[req.params.id].players[0]);
+				self.confirm[other.id] = null;
 				c = null;
 			}
 			res.send("");
