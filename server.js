@@ -189,8 +189,14 @@ var WebServer = function() {
 		});
 
 		//Get arenas
-		self.app.get('/arenas', function(req, res) {
-			res.send(self.arenas);
+		self.app.get('/arenas/:id', function(req, res) {
+			var a;
+			for (i = 0; i < self.arenas.length; i++){
+				if (self.arenas[i].arenaid == parseInt(req.params.id)){
+					a = self.arenas[i];
+				}
+			}
+			res.send(a);
 		});
 
 		//get queue
