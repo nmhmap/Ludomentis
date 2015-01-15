@@ -127,7 +127,7 @@ var WebServer = function() {
 			}
 
 			if (c.players[0].confirm && c.players[1].confirm){
-				self.arenas[c.id] = { players = [ c.players[0], c.players[1], arenaid : c.id, type : c.type };
+				self.arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type };
 				c = null;
 			}
 			res.send("");
@@ -195,7 +195,7 @@ var WebServer = function() {
 			res.send("removed");*/
 		});
 
-		//Get arenas
+		//Get arena
 		self.app.get('/arenas/:id', function(req, res) {
 			res.send(self.arenas[req.params.id]);
 			/*var a;
