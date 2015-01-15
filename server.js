@@ -170,30 +170,38 @@ var WebServer = function() {
 		});
 
 		//Get confirm queue
-		self.app.get('/confirm', function(req, res) {
+		self.app.get('/confirm/:id', function(req, res) {
 			console.log("Requesting confirmation qeueue");
+			var p;
+			req.params.id = parseInt(req.params.id);
+			for (i = 0; i < self.confirm.length; i++) {
+				if (self.confirm[i].players[0].id == req.params.id || self.confirm[i].players[1].id == req.params.id) { 
+					p = self.confirm[i];
+					break;
+				}
+			}
 			res.send(self.confirm);
 		});
 		
 		//Remove arena
 		self.app.get('/arenas/remove/:id', function(req, res){
-			var found = false;
 			for (i = 0; i < self.arenas.length; i++) {
 				if (self.arenas[i].arenaid == parseInt(req.params.id)) {
 					self.arenas.splice(i, 1);
-					var found = true;
 					break;
 				}
 			}
-			res.send(found);
+			res.send("removed");
 		});
 
 		//Get arenas
 		self.app.get('/arenas/:id', function(req, res) {
 			var a;
+			req.params.id = parseInt(req.params.id);
 			for (i = 0; i < self.arenas.length; i++){
-				if (self.arenas[i].arenaid == parseInt(req.params.id)){
+				if (self.arenas[i].arenaid == req.params.id){
 					a = self.arenas[i];
+					break;
 				}
 			}
 			res.send(a);
