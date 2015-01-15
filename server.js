@@ -118,7 +118,7 @@ var WebServer = function() {
 
 		//Add to confirm queue
 		self.app.get('/confirm/add/:id', function(req, res) {
-			var c = self.confirm[req.params.id];
+			var c = self.confirm[parseInt(req.params.id)];
 
 			if (c.players[0].id == req.params.id){
 				c.players[0].confirm = true;
@@ -168,7 +168,7 @@ var WebServer = function() {
 		//Get confirm queue
 		self.app.get('/confirm/:id', function(req, res) {
 			//console.log("Requesting confirmation qeueue");
-			res.send(self.confirm[req.params.id]);
+			res.send(self.confirm[parseInt(req.params.id)]);
 
 			/*var p;
 			req.params.id = parseInt(req.params.id);
@@ -183,7 +183,7 @@ var WebServer = function() {
 		
 		//Remove arena
 		self.app.get('/arenas/remove/:id', function(req, res) {
-			self.arenas[req.params.id] = null;
+			self.arenas[parseInt(req.params.id)] = null;
 			res.send("");
 
 			/*for (i = 0; i < self.arenas.length; i++) {
@@ -197,7 +197,7 @@ var WebServer = function() {
 
 		//Get arena
 		self.app.get('/arenas/:id', function(req, res) {
-			res.send(self.arenas[req.params.id]);
+			res.send(self.arenas[parseInt(req.params.id)]);
 			/*var a;
 			req.params.id = parseInt(req.params.id);
 			for (i = 0; i < self.arenas.length; i++){
