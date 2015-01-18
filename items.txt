@@ -1,29 +1,15 @@
 {
+	"packs" : [
+		["Regular Pack", "Just y'er ordinary pack o'cards.", 1, 1],
+		["Advanced Pack", "Just y'er ordinary pack o'cards... enhanced.", 1, 1],
+		["Legendary Pack", "DESCRIPTION I DONT KNOW QQ <3.", 1, 1]
 	"boards" : [
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ],
-		[ "TestingProduct", "TestDescription Blah", 1, 1 ]
+		["Crystal", "Made from the purest diamonds.", 1, 1],
+		["Steampunk", "Let the steam roll", 1, 1],
+		["Darkness", "Left in darkness, it withers.", 1, 1]
 	],
 	"avatars" : [
-		[ "TestingAvatar", "desc", 23, 23 ],
-		[ "TestingAvatar2", "desc2", 24, 25 ]
+		["Steampunk", "Let the steam roll.", 1, 1],
+		["Darkness", "Left in darkness, it withers.", 1, 1]
 	]
 }
