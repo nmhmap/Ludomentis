@@ -1,8 +1,8 @@
 {
-	"Boards" : [
+	"boards" : [
 		[ "TestingProduct", "TestDescription Blah", 1, 1 ]
 	],
-	"Avatars" : [
+	"avatars" : [
 		[ "TestingAvatar", "desc", 23, 23 ],
 		[ "TestingAvatar2", "desc2", 24, 25 ]
 	]
