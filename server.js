@@ -138,7 +138,7 @@ var WebServer = function() {
 			}
 
 			if (c.players[0].confirm && c.players[1].confirm){
-				self.arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type };
+				self.arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type, set : "Players2" };
 				var other = (self.confirm[req.params.id].players[0].id == req.params.id && self.confirm[req.params.id].players[1]) || (self.confirm[req.params.id].players[1].id == req.params.id && self.confirm[req.params.id].players[0]);
 				/*self.confirm[other.id] = null;
 				self.confirm[other.id] = null;

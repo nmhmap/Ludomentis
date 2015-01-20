@@ -1,0 +1,16 @@
+{
+	"packs" : [
+		["Regular Pack", "Just y'er ordinary pack o'cards.", 1],
+		["Advanced Pack", "Just y'er ordinary pack o'cards... enhanced.", 1],
+		["Legendary Pack", "DESCRIPTION I DONT KNOW QQ <3.", 1]
+	],
+	"boards" : [
+		["Crystal", "Made from the purest diamonds.", 1],
+		["Steampunk", "Let the steam roll", 1],
+		["Darkness", "Left in darkness, it withers.", 1]
+	],
+	"avatars" : [
+		["Steampunk", "Let the steam roll.", 1],
+		["Darkness", "Left in darkness, it withers.", 1]
+	]
+}
