@@ -166,8 +166,8 @@ var WebServer = function() {
 		
 		//Remove from confirm queue
 		self.app.get('/confirm/remove/:id', function(req, res) {
+			self.confirm[self.confirm[req.params.id].players[0].id] = null;
 			self.confirm[self.confirm[req.params.id].players[1].id] = null;
-			self.confirm[req.params.id] = null;
 			res.send("");
 
 			/*for (player = 0; player < self.confirm.length; player++) {
