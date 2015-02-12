@@ -1,3 +1,29 @@
+[0.1.0.283]
+- Arena fixes
+- Conduits
+- Starting turn animation
+- Prompting animation (for conduits, attacking, etc.)
+- Matchmaking fixes
+- Lobby fixes
+- New confirmation ui when searching
+- Fixed scaling for opponent/player information on the play screen
+- Magnifying cards when prompting
+- Store ui fixes
+- Store ui button change
+- Positioning of board fixes
+- Better error handling
+- Card placement in hand fixes
+- interpolation of cards on field fixes
+- character not loading due to primarypart bugs fix
+- News screen changes
+- new scrollbar ui
+- clicking sound when pressing buttons
+- dropdown fixes
+- Loading screen on the lobby (preloads images such as gears and backeffects)
+- Small changes to button ui in lobby
+- fixed canvassize of leaderboards
+- fixed items not clipping when not scaled properly
+
 
 [0.0.0.162]
 - Fixed and optimized web server

@@ -17,30 +17,17 @@ var WebServer = function() {
     	self.arenas = {};
 
         if (typeof self.ipaddress === "undefined") {
-            console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
             self.ipaddress = "127.0.0.1";
         };
     };
 
-    /*self.populateCache = function() {
-        if (typeof self.zcache === "undefined") {
-            self.zcache = { 'index.html': '' };
-        }
-        self.zcache['index.html'] = fs.readFileSync('./index.html');
-    };*/
-
-    //self.cache_get = function(key) { return self.zcache[key]; };
-
-    self.terminator = function(sig){
+    self.terminator = function(sig) {
         if (typeof sig === "string") {
-           console.log('%s: Received %s - terminating sample app ...',
-                       Date(Date.now()), sig);
            process.exit(1);
         }
-        //console.log('%s: Node server stopped.', Date(Date.now()) );
     };
 
-    self.setupTerminationHandlers = function(){
+    self.setupTerminationHandlers = function() {
         process.on('exit', function() { self.terminator(); });
 
         ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
@@ -131,13 +118,13 @@ var WebServer = function() {
 			req.params.id = parseInt(req.params.id);
 			var c = self.confirm[req.params.id];
 
-			if (c.players[0].id == req.params.id){
+			if (c.players[0].id == req.params.id) {
 				c.players[0].confirm = true;
-			} else if (c.players[1].id == req.params.id){
+			} else if (c.players[1].id == req.params.id) {
 				c.players[1].confirm = true;
 			}
 
-			if (c.players[0].confirm && c.players[1].confirm){
+			if (c.players[0].confirm && c.players[1].confirm) {
 				self.arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type, set : "Players2" };
 				var other = (self.confirm[req.params.id].players[0].id == req.params.id && self.confirm[req.params.id].players[1]) || (self.confirm[req.params.id].players[1].id == req.params.id && self.confirm[req.params.id].players[0]);
 				/*self.confirm[other.id] = null;
@@ -223,12 +210,12 @@ var WebServer = function() {
 		});
 
 		//get queue
-		self.app.get('/queue', function(req, res){
+		self.app.get('/queue', function(req, res) {
 			res.send(self.queue);
 		});
 
 		//get amount of players added to queue
-		self.app.get('/counter', function(req, res){
+		self.app.get('/counter', function(req, res) {
         	res.send(counter);
         })
 		
