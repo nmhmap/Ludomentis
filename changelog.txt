@@ -1,44 +1,44 @@
 [0.1.0.283]
-- Arena fixes
-- Conduits
-- Starting turn animation
-- Prompting animation (for conduits, attacking, etc.)
-- Matchmaking fixes
-- Lobby fixes
-- New confirmation ui when searching
-- Fixed scaling for opponent/player information on the play screen
-- Magnifying cards when prompting
-- Store ui fixes
-- Store ui button change
-- Positioning of board fixes
-- Better error handling
-- Card placement in hand fixes
-- Interpolation of cards on field fixes
-- Character not loading due to primarypart bugs fix
-- News screen changes
-- New scrollbar ui
-- Clicking sound when pressing buttons
-- Dropdown fixes
-- Loading screen on the lobby (preloads images such as gears and backeffects)
-- Small changes to button ui in lobby
-- Fixed canvassize of leaderboards
-- Fixed items not clipping when not scaled properly
+- Arena bugs
++ Conduits
++ Starting turn animation
++ Prompting animation (for conduits, attacking, etc.)
+- Matchmaking bugs
+- Lobby bugs
++ Confirmation ui when searching
+- Scaling for opponent/player information on the play screen bug
++ Magnifying cards when prompting
+- Store ui bugs
++ Store ui button change
+- Positioning of board bugs
++ Better error handling
+- Card placement in hand bugs
+- Interpolation of cards on field bugs
+- Character not loading due to primarypart bugs bug
++ News screen changes
++ New scrollbar ui
++ Clicking sound when pressing buttons
+- Dropdown bugs
++ Loading screen on the lobby (preloads images such as gears and backeffects)
++ Small changes to button ui in lobby
+- Canvassize of leaderboards bug
+- Items not clipping when not scaled properly bug
 
 
 [0.0.0.162]
-- Fixed and optimized web server
-- Added News to home screen
-- Added practice screen
-- Added Achievements to profile screen
-- Fixed a few problems with the arena
-- Changed some rules with the arena (Must kill all cards on enemy field to attack avatar)
++ Optimized/Fixed web server
++ News to home screen
++ Practice screen
++ Achievements to profile screen
+- Arena bugs
++ Changed some rules with the arena (Must kill all cards on enemy field to attack avatar)
 - Fixed some play/deck screen resolution problems
-- Arena now properly teleports you back to the lobby if a player leaves or the game ends
++ Arena now properly teleports you back to the lobby if a player leaves or the game ends
 
 [0.0.0.142]
-- Web server for matchmaking. (Much faster now :D)
-- Ranked screen.
-- Lobby button highlighting/selecting fixes.
++ Web server for matchmaking. (Much faster now :D)
++ Ranked screen.
++ Lobby button highlighting/selecting fixes.
 - Fixed changelog resizing
 - Fixed getting arena gametypes
 - Fixed chat in arena when playing against other player
@@ -46,19 +46,19 @@
 
 
 [0.0.0.124]
-- Completely new lobby
-- Deck screen (deck list, dropdown menus, search)
-- Play screen (ranked, practice, campaign, friends)
-- Home screen (leaderboards (overall, wins, losses), changelogs, correct resizing of text and versions in the changelogs)
-- Highlighting of current screen over buttons
-- Mouse over selector tween
-- Optimizations to sending to the player
++ Completely new lobby
++ Deck screen (deck list, dropdown menus, search)
++ Play screen (ranked, practice, campaign, friends)
++ Home screen (leaderboards (overall, wins, losses), changelogs, correct resizing of text and versions in the changelogs)
++ Highlighting of current screen over buttons
++ Mouse over selector tween
++ Optimizations to sending to the player
 
 
 [0.0.0.112]
-- Converted 2 places (for ai and players) into 1 (still looking around for some bugs).
-- New background to lobby.
-- Moved card information from modulescript to github.
-- Made lobby button code cleaner
++ Converted 2 places (for ai and players) into 1 (still looking around for some bugs).
++ New background to lobby.
++ Moved card information from modulescript to github.
++ Made lobby button code cleaner
 - Fixed mute/volume slider to fit all screens
 - Fixed an interpolation bug
