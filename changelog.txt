@@ -13,16 +13,16 @@
 - Positioning of board fixes
 - Better error handling
 - Card placement in hand fixes
-- interpolation of cards on field fixes
-- character not loading due to primarypart bugs fix
+- Interpolation of cards on field fixes
+- Character not loading due to primarypart bugs fix
 - News screen changes
-- new scrollbar ui
-- clicking sound when pressing buttons
-- dropdown fixes
+- New scrollbar ui
+- Clicking sound when pressing buttons
+- Dropdown fixes
 - Loading screen on the lobby (preloads images such as gears and backeffects)
 - Small changes to button ui in lobby
-- fixed canvassize of leaderboards
-- fixed items not clipping when not scaled properly
+- Fixed canvassize of leaderboards
+- Fixed items not clipping when not scaled properly
 
 
 [0.0.0.162]
