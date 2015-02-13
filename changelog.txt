@@ -1,4 +1,5 @@
 [0.1.0.283]
+- Energy/Attacking prompt edge not fading
 + Dropdown clicking main button to cancel
 + Teleportation UI
 + Scrolling through scrollframes with mouse
