@@ -1,4 +1,6 @@
 [0.1.0.283]
++ Better card positioning
++ Attacking cards
 - Energy/Attacking prompt edge not fading
 + Dropdown clicking main button to cancel
 + Teleportation UI

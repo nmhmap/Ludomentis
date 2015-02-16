@@ -57,7 +57,10 @@ var WebServer = function() {
 			//var inQueue = false;
 			var queue = self.queue;
 
-			queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.body.type, confirm : false, placeid : req.body.placeid });
+			//accept - 0: awaiting
+			//accept - 1: failed/canceled
+			//accept - 2: accepted
+			queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.body.type, confirm : false, accept : 0, placeid : req.body.placeid });
 			counter += 1;
 			console.log(req.body.name + " has joined(queue/" + req.body.type + ")");
 
@@ -180,6 +183,17 @@ var WebServer = function() {
 			}
 			res.send(self.confirm);*/
 		});
+
+		self.app.post('/confirm/accept', function(req, res) {
+			var response = parseInt(req.body.response);
+			var userId = parseInt(req.body.userId);
+			console.log("response:" + " " + userId + " " + response);
+			if (self.confirm[userId].players[0].userId == userId) {
+				self.confirm[userId].players[0].accept = response;
+			} else if (self.confirm[userId].players[1].userId == userId) {
+				self.confirm[userId].players[1].accept = response;
+			}
+		})
 		
 		//Remove arena
 		self.app.get('/arenas/remove/:id', function(req, res) {
@@ -217,7 +231,13 @@ var WebServer = function() {
 		//get amount of players added to queue
 		self.app.get('/counter', function(req, res) {
         	res.send(counter);
-        })
+        });
+
+
+        //proxy
+        /*self.app.get('/proxy/:rest', function(req, res) {
+        	res.send()
+        })*/
 		
 		//Send index.html if root url
         self.app.get('/', function(req, res) {
