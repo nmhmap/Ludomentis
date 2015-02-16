@@ -188,6 +188,7 @@ var WebServer = function() {
 			var response = parseInt(req.body.response);
 			var userId = parseInt(req.body.userId);
 			console.log("response:" + " " + userId + " " + response);
+			console.log(self.confirm[userId]);
 			if (self.confirm[userId].players[0].userId == userId) {
 				self.confirm[userId].players[0].accept = response;
 			} else if (self.confirm[userId].players[1].userId == userId) {
