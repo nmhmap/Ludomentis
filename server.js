@@ -188,11 +188,11 @@ var WebServer = function() {
 			var response = parseInt(req.body.response);
 			var userId = parseInt(req.body.userId);
 			console.log("response:" + " " + userId + " " + response);
-			console.log(self.confirm[userId].players[0].userId + " " + userId);
-			console.log(self.confirm[userId].players[1].userId + " " + userId);
-			if (self.confirm[userId].players[0].userId == userId) {
+			console.log(self.confirm[userId].players[0].id + " " + userId);
+			console.log(self.confirm[userId].players[1].id + " " + userId);
+			if (self.confirm[userId].players[0].id == userId) {
 				self.confirm[userId].players[0].accept = response;
-			} else if (self.confirm[userId].players[1].userId == userId) {
+			} else if (self.confirm[userId].players[1].id == userId) {
 				self.confirm[userId].players[1].accept = response;
 			}
 			console.log(self.confirm[userId]);
