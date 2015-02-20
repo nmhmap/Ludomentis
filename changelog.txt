@@ -1,3 +1,10 @@
+[0.1.0.321]
++ Changed card selection
+- Fixed card positioning problems
+- Deck problems
++ New search method, more accurate
++ better/more animations
+
 [0.1.0.283]
 + Better card positioning
 + Attacking cards
