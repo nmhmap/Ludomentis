@@ -1,4 +1,13 @@
-[0.1.0.321]
+[0.1.0.343]
++ Camera shake
+- Deck fixes
++ Loading screen for arena
++ Match found + Cancel/Accept buttons
+- Display fixes
++ Removing cards from field
++ Updating cards on hit
++ Card hover animation
++ Conduit -> Card link animation
 + Changed card selection
 - Fixed card positioning problems
 - Deck problems

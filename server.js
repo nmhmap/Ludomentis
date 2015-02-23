@@ -12,9 +12,9 @@ var WebServer = function() {
 
         self.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
         self.port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-        self.queue = [];
-    	self.confirm = {};
-    	self.arenas = {};
+        self.queue = [ ];
+    	self.confirm = { };
+    	self.arenas = { };
 
         if (typeof self.ipaddress === "undefined") {
             self.ipaddress = "127.0.0.1";
