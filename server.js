@@ -43,11 +43,8 @@ var WebServer = function() {
         var id = self.app.param("/^\d+$/");
         var type = self.app.param("/^\w+$/");
 
-        //var userId = self.app.param("user/^\d+$/");
-
         self.app.use(express.bodyParser());
 		self.app.use('/css', express.static(__dirname + '/css'));
-		//self.app.use('/fonts', express.static(__dirname + '/fonts'));
 		self.app.use('/img', express.static(__dirname + '/img'));
 	
 		//root url (http://quadVector.tk) || (http://aceeri-ludomentis.rhcloud.com/)
@@ -74,16 +71,8 @@ var WebServer = function() {
 		    			if (player1.type == player2.type && player1.id != player2.id && Math.abs(player1.rank - player2.rank) < 50) {
 		    				queue.splice((p1 > p2) ? p1 : p2, 1);
 		    				queue.splice((p1 > p2) ? p2 : p1, 1);
-		    				/*if (p1 > p2) {
-		    					queue.splice(p1, 1);
-		    					queue.splice(p2, 1);
-		    				} else {
-		    					queue.splice(p2, 1);
-		    					queue.splice(p1, 1);
-		    				}*/
 		    				self.confirm[player1.id] = { players : [ player1, player2 ], id : player1.placeid, type : player1.type };
 		    				self.confirm[player2.id] = self.confirm[player1.id];
-		    				//self.confirm.push({ players : [ player1, player2 ], id : player1.placeid, type : player1.type });
 							console.log("Matching " + player1.name + ", " + player2.name + " in arena/" + player1.type + ": " + player1.placeid);
 		    			}
 		    		}
@@ -105,14 +94,6 @@ var WebServer = function() {
 				}
 			}
 
-			/*if (self.confirm[req.params.id] && self.confirm[req.params.id].players) {
-				var other = (self.confirm[req.params.id].players[0].id == req.params.id && self.confirm[req.params.id].players[1]) || (self.confirm[req.params.id].players[1].id == req.params.id && self.confirm[req.params.id].players[0]);
-				other.confirm = false;
-				self.queue.push(other);
-				self.confirm[other.id] = null;
-				self.confirm[req.params.id] = null;
-			}*/
-
 			res.send("removed");
 		});
 
@@ -130,28 +111,8 @@ var WebServer = function() {
 			if (c.players[0].confirm && c.players[1].confirm) {
 				self.arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type, set : "Players2" };
 				var other = (self.confirm[req.params.id].players[0].id == req.params.id && self.confirm[req.params.id].players[1]) || (self.confirm[req.params.id].players[1].id == req.params.id && self.confirm[req.params.id].players[0]);
-				/*self.confirm[other.id] = null;
-				self.confirm[other.id] = null;
-				c = null;*/
 			}
 			res.send("");
-
-			/*for (player = 0; player < self.confirm.length; player++) {
-				if (self.confirm[player].players[0].id == req.params.id) {
-					self.confirm[player].players[0].confirm = true;
-					console.log(self.confirm[player].players[0].name + " confirmed.");
-				} else if (self.confirm[player].players[1].id == req.params.id) {
-					self.confirm[player].players[1].confirm = true;
-					console.log(self.confirm[player].players[1].name + " confirmed.");
-				}
-				if (self.confirm[player].players[0].confirm && self.confirm[player].players[1].confirm) {
-					self.arenas[arenaid] = { arenaid: self.confirm[player].id, type : self.confirm[player]type };
-					//self.arenas.push({ arenaid : self.confirm[player].id, type : self.confirm[player].type });
-					console.log("Pushing new arena(" + self.confirm[player].id + ") to array.");
-					break;
-				}
-			}
-			res.send(self.confirm[player]);*/
 		});
 		
 		//Remove from confirm queue
@@ -159,29 +120,11 @@ var WebServer = function() {
 			self.confirm[self.confirm[req.params.id].players[0].id] = null;
 			self.confirm[self.confirm[req.params.id].players[1].id] = null;
 			res.send("");
-
-			/*for (player = 0; player < self.confirm.length; player++) {
-				if (self.confirm[player].players[0].id == req.params.id || self.confirm[player].players[1].id == req.params.id) {
-					console.log("Removing from confirmation queue(" + self.confirm[player].players[0].name + " & " + self.confirm[player].players[1].name + ")");
-					self.confirm.splice(player, 1);
-				}
-			}
-			res.send("");*/
 		});
 
 		//Get confirm queue
 		self.app.get('/confirm/:id', function(req, res) {
 			res.send(self.confirm[parseInt(req.params.id)] || []);
-
-			/*var p;
-			req.params.id = parseInt(req.params.id);
-			for (i = 0; i < self.confirm.length; i++) {
-				if (self.confirm[i].players[0].id == req.params.id || self.confirm[i].players[1].id == req.params.id) { 
-					p = self.confirm[i];
-					break;
-				}
-			}
-			res.send(self.confirm);*/
 		});
 
 		self.app.post('/confirm/accept', function(req, res) {
@@ -202,28 +145,11 @@ var WebServer = function() {
 		self.app.get('/arenas/remove/:id', function(req, res) {
 			self.arenas[parseInt(req.params.id)] = null;
 			res.send("");
-
-			/*for (i = 0; i < self.arenas.length; i++) {
-				if (self.arenas[i].arenaid == parseInt(req.params.id)) {
-					self.arenas.splice(i, 1);
-					break;
-				}
-			}
-			res.send("removed");*/
 		});
 
 		//Get arena
 		self.app.get('/arenas/:id', function(req, res) {
 			res.send(self.arenas[parseInt(req.params.id)]);
-			/*var a;
-			req.params.id = parseInt(req.params.id);
-			for (i = 0; i < self.arenas.length; i++){
-				if (self.arenas[i].arenaid == req.params.id){
-					a = self.arenas[i];
-					break;
-				}
-			}
-			res.send(a);*/
 		});
 
 		//get queue
@@ -235,12 +161,6 @@ var WebServer = function() {
 		self.app.get('/counter', function(req, res) {
         	res.send(counter);
         });
-
-
-        //proxy
-        /*self.app.get('/proxy/:rest', function(req, res) {
-        	res.send()
-        })*/
 		
 		//Send index.html if root url
         self.app.get('/', function(req, res) {
