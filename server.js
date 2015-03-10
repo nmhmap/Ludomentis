@@ -58,12 +58,12 @@ var WebServer = function() {
 			//accept - 1: failed/canceled
 			//accept - 2: accepted
 			queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.body.type, confirm : false, accept : 0, placeid : req.body.placeid });
-			counter += 1;
-			console.log(req.body.name + " has joined(queue/" + req.body.type + ")");
+			//counter += 1;
+			//console.log(req.body.name + " has joined(queue/" + req.body.type + ")");
 
 			//Removes from queue and adds to confirmation
-			if (counter > 1) {
-		    	console.log("Sorting", queue.length, "players");
+			//if (counter > 1) {
+		    	//console.log("Sorting", queue.length, "players");
 		    	for (p1 = 0; p1 < queue.length; p1++) {
 		    		for (p2 = 0; p2 < queue.length; p2 ++) {
 						var player1 = queue[p1];
@@ -73,21 +73,21 @@ var WebServer = function() {
 		    				queue.splice((p1 > p2) ? p2 : p1, 1);
 		    				self.confirm[player1.id] = { players : [ player1, player2 ], id : player1.placeid, type : player1.type };
 		    				self.confirm[player2.id] = self.confirm[player1.id];
-							console.log("Matching " + player1.name + ", " + player2.name + " in arena/" + player1.type + ": " + player1.placeid);
+							///console.log("Matching " + player1.name + ", " + player2.name + " in arena/" + player1.type + ": " + player1.placeid);
 		    			}
 		    		}
 		    	}
-		    }
+		    //}
 			res.send("added");
 		});
 
 		//Leaving queue
 		self.app.get('/leave/:id', function(req, res) {
-			var queue = self.queue;
+			var queue     = self.queue;
 			req.params.id = parseInt(req.params.id);
-			for (player = 0; player < queue.length; player++){
+			for (player = 0; player < queue.length; player++) {
 				if (queue[player].id == req.params.id) {
-					console.log(queue[player].name + " has left(queue/" + queue[player].type + ")");
+					//console.log(queue[player].name + " has left(queue/" + queue[player].type + ")");
 					queue.splice(player, 1);
 					counter -= 1;
 					break;
@@ -100,7 +100,7 @@ var WebServer = function() {
 		//Add to confirm queue
 		self.app.get('/confirm/add/:id', function(req, res) {
 			req.params.id = parseInt(req.params.id);
-			var c = self.confirm[req.params.id];
+			var c         = self.confirm[req.params.id];
 
 			if (c.players[0].id == req.params.id) {
 				c.players[0].confirm = true;
@@ -110,7 +110,7 @@ var WebServer = function() {
 
 			if (c.players[0].confirm && c.players[1].confirm) {
 				self.arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type, set : "Players2" };
-				var other = (self.confirm[req.params.id].players[0].id == req.params.id && self.confirm[req.params.id].players[1]) || (self.confirm[req.params.id].players[1].id == req.params.id && self.confirm[req.params.id].players[0]);
+				var other         = (self.confirm[req.params.id].players[0].id == req.params.id && self.confirm[req.params.id].players[1]) || (self.confirm[req.params.id].players[1].id == req.params.id && self.confirm[req.params.id].players[0]);
 			}
 			res.send("");
 		});
@@ -129,16 +129,13 @@ var WebServer = function() {
 
 		self.app.post('/confirm/accept', function(req, res) {
 			var response = parseInt(req.body.response);
-			var userId = parseInt(req.body.userId);
-			console.log("response:" + " " + userId + " " + response);
-			console.log(self.confirm[userId].players[0].id + " " + userId);
-			console.log(self.confirm[userId].players[1].id + " " + userId);
+			var userId   = parseInt(req.body.userId);
 			if (self.confirm[userId].players[0].id == userId) {
 				self.confirm[userId].players[0].accept = response;
 			} else if (self.confirm[userId].players[1].id == userId) {
 				self.confirm[userId].players[1].accept = response;
 			}
-			console.log(self.confirm[userId]);
+			//console.log(self.confirm[userId]);
 		})
 		
 		//Remove arena

@@ -1,4 +1,13 @@
+[0.1.0.389]
+- Fixed loading screen not fading all the way
+
+
+
 [0.1.0.343]
++ Smoother loading screen for arena
+- BreakInterp bug
+- Loading bugs
+- Field card disappearing from board if clicking too fast
 + Camera shake
 - Deck fixes
 + Loading screen for arena
