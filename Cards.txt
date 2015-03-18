@@ -8,6 +8,7 @@
 		"defense" : 8,
 		"energy" : 40,
 		"ability" : {
+			"affect" : "defense",
 			"ready" : "played",
 			"type" : "kill",
 			"target" : "allenemy",
@@ -25,7 +26,7 @@
 		"defense" : 2,
 		"energy" : 16,
 		"ability" : {
-			"affect" : "defense"
+			"affect" : "defense",
 			"ready" : "played",
 			"type" : "kill",
 			"target" : "prompt"
@@ -41,7 +42,7 @@
 		"defense" : 3,
 		"energy" : 16,
 		"ability" : {
-			"affect" : "defense"
+			"affect" : "defense",
 			"ready" : "played",
 			"type" : "kill",
 			"target" : "prompt"
@@ -57,7 +58,7 @@
 		"defense" : 1,
 		"energy" : 16,
 		"ability" : {
-			"affect" : "defense"
+			"affect" : "defense",
 			"ready" : "played",
 			"type" : "kill",
 			"target" : "prompt"
