@@ -32,9 +32,7 @@ app.post('/join', function(req, res) {
 		for (p2 = 0; p2 < queue.length; p2 ++) {
 			var player1 = queue[p1];
 			var player2 = queue[p2];
-			console.log(player1.type + " " + player2.type + ", " + player1.id + " " + player2.id + ", " + player1.rank + " " + player2.rank);
-			console.log(player1.type == player2.type + " " + player1.id != player2.id + " " + Math.abs(player1.rank - player2.rank) < 50);
-			if (player1.type == player2.type && player1.id != player2.id && Math.abs(player1.rank - player2.rank) < 50) {
+			if (player1.type == player2.type && player1.id != player2.id && Math.abs(player1.rank - player2.rank) <= 50) {
 				queue.splice((p1 > p2) ? p1 : p2, 1);
 				queue.splice((p1 > p2) ? p2 : p1, 1);
 				confirm[player1.id] = { players : [ player1, player2 ], id : player1.placeid, type : player1.type };
@@ -46,7 +44,6 @@ app.post('/join', function(req, res) {
 });
 
 app.get('/leave/:id', function(req, res) {
-	console.log(req.params.id);
 	req.params.id = parseInt(req.params.id);
 	for (player = 0; player < queue.length; player++) {
 		if (queue[player].id == req.params.id) {
@@ -80,7 +77,6 @@ app.get('/confirm/remove/:id', function(req, res) {
 	confirm[confirm[req.params.id].players[1].id] = null;
 	res.end("");
 });
-
 
 var confirmRequests = [ ];
 app.get('/confirm/:id', function(req, res) {
