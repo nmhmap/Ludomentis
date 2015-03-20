@@ -22,7 +22,7 @@ app.use(express.bodyParser());
 app.post('/join', function(req, res) {
 	queue.push({
 		name 	: req.body.name,
-		userId 	: parseInt(req.body.id),
+		id 	: parseInt(req.body.id),
 		placeid : parseInt(req.body.placeid),
 		rank 	: parseInt(req.body.rank),
 		type 	: req.body.type
