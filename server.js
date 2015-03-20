@@ -22,10 +22,14 @@ app.use(express.bodyParser());
 app.post('/join', function(req, res) {
 	var found = false;
 	for (i = 0; i < queue.length; i ++) {
-		if (queue[i].id == req.body.name) {
+		if (queue[i].id == parseInt(req.body.id)) {
 			found = true;
 			break;
 		}
+	}
+
+	if (confirm[parseInt(req.body.id)] != undefined) {
+		found = true;
 	}
 
 	if (!found) {
@@ -85,8 +89,8 @@ app.get('/confirm/add/:id', function(req, res) {
 });
 
 app.get('/confirm/remove/:id', function(req, res) {
-	confirm[confirm[req.params.id].players[0].id] = null;
-	confirm[confirm[req.params.id].players[1].id] = null;
+	confirm[confirm[req.params.id].players[0].id] = undefined;
+	confirm[confirm[req.params.id].players[1].id] = undefined;
 	res.end("");
 });
 
@@ -127,7 +131,7 @@ app.post('/confirm/accept', function(req, res) {
 })
 
 app.get('/arenas/remove/:id', function(req, res) {
-	arenas[parseInt(req.params.id)] = null;
+	arenas[parseInt(req.params.id)] = undefined;
 	res.send("");
 });
 
