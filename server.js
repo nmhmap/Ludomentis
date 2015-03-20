@@ -100,18 +100,15 @@ setInterval(function() {
 	for (var i = confirmRequests.length - 1; i >= 0; i--) {
 		response = confirmRequests[i].response;
 		if (confirm[confirmRequests[i].request.params.id] != undefined) {
-			console.log("not undefined");
-			//response.setHeader('Content-Type', 'text/plain')
 			response.write(JSON.stringify(confirm[confirmRequests[i].request.params.id]));
 			response.end();
 			confirmRequests.splice(i, 1);
-			//i++;
 		//check if request has polled for more than 28 seconds
 		} else if (confirmRequests[i].timestamp < expiration) {
 			response.end("");
 		}
 	}
-}, 1000);
+}, 500);
 
 app.post('/confirm/accept', function(req, res) {
 	var response = parseInt(req.body.response);
