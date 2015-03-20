@@ -101,7 +101,7 @@ setInterval(function() {
 		response = confirmRequests[i].response;
 		if (confirm[confirmRequests[i].request.params.id] != "undefined") {
 			console.log(confirm[confirmRequests[i].request.params.id]);
-			response.end(confirm[confirmRequests[i].request.params.id]);
+			response.send(confirm[confirmRequests[i].request.params.id]);
 		//check if request has polled for more than 28 seconds
 		} else if (requests[i].timestamp < expiration) {
 			response.end("");
