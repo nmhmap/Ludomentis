@@ -95,7 +95,7 @@ app.get('/confirm/:id', function(req, res) {
 
 //check every second for response
 setInterval(function() {
-	var expiration = new Date().getTime() - 28000;
+	var expiration = new Date().getTime() - 5000;
 	var response;
 	for (var i = confirmRequests.length - 1; i >= 0; i--) {
 		response = confirmRequests[i].response;
