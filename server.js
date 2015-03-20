@@ -44,6 +44,7 @@ app.post('/join', function(req, res) {
 });
 
 app.get('/leave/:id', function(req, res) {
+	console.log(req.params.id);
 	req.params.id = parseInt(req.params.id);
 	for (player = 0; player < queue.length; player++) {
 		if (queue[player].id == req.params.id) {
