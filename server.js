@@ -33,7 +33,7 @@ app.post('/join', function(req, res) {
 			var player1 = queue[p1];
 			var player2 = queue[p2];
 			console.log(player1.rank + " " + player2.rank);
-			console.log(player1.type == player2.type && player1.id != player2.id && Math.abs(player1.rank - player2.rank) < 50);
+			console.log(player1.type == player2.type + " " + player1.id != player2.id + " " + Math.abs(player1.rank - player2.rank) < 50);
 			if (player1.type == player2.type && player1.id != player2.id && Math.abs(player1.rank - player2.rank) < 50) {
 				queue.splice((p1 > p2) ? p1 : p2, 1);
 				queue.splice((p1 > p2) ? p2 : p1, 1);
