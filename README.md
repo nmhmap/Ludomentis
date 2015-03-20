@@ -4,7 +4,7 @@
 ## Card
 
 #### Minion:
-```json
+```
 {
 	"name" : "",
 	"rarity" : "",
@@ -71,23 +71,27 @@ ability.ready (when the ability is fired)
  - "attacked" (whenever the card is attacked)
  - "firstattacked" (when the card is first attacked)
  - "killed" (when the card's defense reaches 0 or lower)
- 
+
+---
 ability.origin (changes origin of ability)
  - "randomenemy"
  - "randomfriendly" (picks random out of friendly from original plr)
  - "prompt" (prompts player)
- 
+
+---
 ability.damage (what the damage amount comes from)
  - "byattack" (damage from whoever attacked)
  - "attack" (damage from ability's parent card's attack)
  - "custom" (custom, affected by ability.damageamount)
- 
+
+---
 ability.type (what it does with the damage amount)
  - "damage" (damages affected by amount)
  - "kill" (automatically applies 9999 damage to the affected)
  - "heal" (heals the affects by amount)
  - "random" (picks randomly out of "damage", "kill", and "heal")
- 
+
+---
 ability.target (determines what is affected by the damage amount)
  - "all" (affects all minions)
  - "allenemy" (affects all enemy minions from original plr)
@@ -95,6 +99,7 @@ ability.target (determines what is affected by the damage amount)
  - "by" (affects the card that attacked)
  - "prompt" (prompts player)
  
+---
 ability.targetexception (ignores a certain card in the affected)
  - "random" (picks random out of affected)
  - "prompt" (prompts player)
