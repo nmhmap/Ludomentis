@@ -4,7 +4,7 @@
 ## Card
 
 #### Minion:
-```
+```json
 {
 	"name" : "",
 	"rarity" : "",
