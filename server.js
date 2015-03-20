@@ -20,27 +20,39 @@ var type = app.param("/^\w+$/");
 app.use(express.bodyParser());
 
 app.post('/join', function(req, res) {
-	queue.push({
-		name 	: req.body.name,
-		id 		: parseInt(req.body.id),
-		placeid : parseInt(req.body.placeid),
-		rank 	: parseInt(req.body.rank),
-		type 	: req.body.type
-	})
-
-	for (p1 = 0; p1 < queue.length; p1++) {
-		for (p2 = 0; p2 < queue.length; p2 ++) {
-			var player1 = queue[p1];
-			var player2 = queue[p2];
-			if (player1.type == player2.type && player1.id != player2.id && Math.abs(player1.rank - player2.rank) <= 50) {
-				queue.splice((p1 > p2) ? p1 : p2, 1);
-				queue.splice((p1 > p2) ? p2 : p1, 1);
-				confirm[player1.id] = { players : [ player1, player2 ], id : player1.placeid, type : player1.type };
-				confirm[player2.id] = confirm[player1.id];
-			}
+	var found = false;
+	for (i = 0; i < queue.length; i ++) {
+		if (queue[i].id == req.body.name) {
+			found = true;
+			break;
 		}
 	}
-	res.send("added");
+
+	if (!found) {
+		queue.push({
+			name 	: req.body.name,
+			id 		: parseInt(req.body.id),
+			placeid : parseInt(req.body.placeid),
+			rank 	: parseInt(req.body.rank),
+			type 	: req.body.type
+		});
+
+		for (p1 = 0; p1 < queue.length; p1++) {
+			for (p2 = 0; p2 < queue.length; p2 ++) {
+				var player1 = queue[p1];
+				var player2 = queue[p2];
+				if (player1.type == player2.type && player1.id != player2.id && Math.abs(player1.rank - player2.rank) <= 50) {
+					queue.splice((p1 > p2) ? p1 : p2, 1);
+					queue.splice((p1 > p2) ? p2 : p1, 1);
+					confirm[player1.id] = { players : [ player1, player2 ], id : player1.placeid, type : player1.type };
+					confirm[player2.id] = confirm[player1.id];
+				}
+			}
+		}
+		res.send("added");
+	} else {
+		res.send("rejected");
+	}
 });
 
 app.get('/leave/:id', function(req, res) {
