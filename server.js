@@ -14,20 +14,63 @@ if (typeof ipaddress === "undefined") {
 	ipaddress = "127.0.0.1";
 };
 
+config = {
+	host     : process.env.OPENSHIFT_MYSQL_DB_HOST,
+	user     : process.env.OPENSHIFT_MYSQL_DB_USERNAME,
+	pass     : process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
+	port     : process.env.OPENSHIFT_MYSQL_DB_PORT,
+	database : 'aceeri'
+}
+
+var connection = mysql.createConnection(config);
+
+connection.connect();
+
+connection.on('close', function(err) {
+	if (err) {
+		connection = mysql.createConnection(config);
+	} else {
+		console.log('Connection closed normally.');
+	}
+});
+
 var app  = express();
 var id   = app.param("/^\d+$/");
 var type = app.param("/^\w+$/");
 
 app.use(express.bodyParser());
 
+function dataQuery(query){
+	var query = connection.query(query);
+
+	query.on("error", function(err){
+		throw err;
+	})
+
+	return query;
+}
+
+dataQuery("INSERT INTO queue VALUES (0, \"PiggyJingles\", 9999, 1020, 70918372, \"normal\");");
+
 app.post('/join', function(req, res) {
+	dataQuery("INSERT INTO queue VALUES (0,
+		+ "\"" + req.body.name + "\"" + "," 
+		+ parseInt(req.body.id) + "," 
+		+ parseInt(req.body.rank) + ","
+		+ parseInt(req.body.placeid) + ","
+		+ "\"" + req.body.type; "\"" + 
+		");"
+	);
 
-	//accept - 0: awaiting
-	//accept - 1: failed/canceled
-	//accept - 2: accepted
-	queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.body.type, confirm : false, accept : 0, placeid : req.body.placeid });
+	var query = dataQuery("SELECT * FROM queue");
 
-	for (p1 = 0; p1 < queue.length; p1++) {
+	query.on("result", function(row){
+		connection.pause();
+		if (row)
+		console.log(row);
+		connection.resume();
+	})
+	/*for (p1 = 0; p1 < queue.length; p1++) {
 		for (p2 = 0; p2 < queue.length; p2 ++) {
 			var player1 = queue[p1];
 			var player2 = queue[p2];
@@ -38,7 +81,7 @@ app.post('/join', function(req, res) {
 				confirm[player2.id] = confirm[player1.id];
 			}
 		}
-	}
+	}*/
 	res.send("added");
 });
 
