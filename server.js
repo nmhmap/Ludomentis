@@ -72,13 +72,13 @@ app.get('/confirm/add/:id', function(req, res) {
 	if (c.players[0].confirm && c.players[1].confirm) {
 		arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type, set : "Players2" };
 	}
-	res.send("");
+	res.end("");
 });
 
 app.get('/confirm/remove/:id', function(req, res) {
 	confirm[confirm[req.params.id].players[0].id] = null;
 	confirm[confirm[req.params.id].players[1].id] = null;
-	res.send("");
+	res.end("");
 });
 
 
@@ -93,7 +93,7 @@ app.get('/confirm/:id', function(req, res) {
 
 //check every second for response
 setInterval(function() {
-	var expiration = new Date().getTime() - 5000;
+	var expiration = new Date().getTime() - 28000;
 	var response;
 	for (var i = confirmRequests.length - 1; i >= 0; i--) {
 		response = confirmRequests[i].response;
