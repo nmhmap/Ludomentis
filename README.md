@@ -1,12 +1,9 @@
 # Ludomentis
 
 
-## Card Creation
-
-### Card Syntax
+## Card
 
 Minion:
-------------
 {
 	"name" : "",
 	"rarity" : "",
@@ -22,7 +19,6 @@ Minion:
 }
 
 Weapon:
-------------
 {
 	"name" : "",
 	"rarity" : "",
@@ -35,18 +31,17 @@ Weapon:
 }
 
 Ability:
-------------
-{
-	"name" : "",
-	"rarity" : "",
-	"image" : 1,
-	"energy" : 1,
-	"ability" : {
-		"ready" : "",
-		...
-	},
-	"description" : ""
-}
+		{
+			"name" : "",
+			"rarity" : "",
+			"image" : 1,
+			"energy" : 1,
+			"ability" : {
+				"ready" : "",
+				...
+			},
+			"description" : ""
+		}
 
 
 name = The card's defining name
