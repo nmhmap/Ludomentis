@@ -80,9 +80,30 @@ app.get('/confirm/remove/:id', function(req, res) {
 	res.send("");
 });
 
+
+var confirmRequests = [ ];
 app.get('/confirm/:id', function(req, res) {
-	res.send(confirm[parseInt(req.params.id)] || []);
+	confirmRequests.push({
+		request: req,
+		response: res,
+		timestamp: new Date().getTime()
+	});
 });
+
+//check every second for response
+setInterval(function() {
+	var expiration = new Date().getTime() - 28000;
+	var response;
+	for (var i = confirmRequests.length - 1; i >= 0; i--) {
+		response = confirmRequests[i].response;
+		if (confirm[confirmRequests[i].request.params.id] != "undefined") {
+			response.send(confirm[confirmRequests[i].request.params.id]);
+		//check if request has polled for more than 28 seconds
+		} else if (requests[i].timestamp < expiration) {
+			response.end("");
+		}
+	}
+}, 1000);
 
 app.post('/confirm/accept', function(req, res) {
 	var response = parseInt(req.body.response);
