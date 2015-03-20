@@ -113,6 +113,10 @@ app.get('/arenas/:id', function(req, res) {
 	res.send(arenas[parseInt(req.params.id)]);
 });
 
+app.get('/queue', function(req, res){
+	res.send(queue);
+})
+
 //root page
 app.get('/', function(req, res) {
 	res.sendfile('index.html');
