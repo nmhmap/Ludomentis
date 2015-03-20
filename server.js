@@ -53,14 +53,13 @@ function dataQuery(query){
 dataQuery("INSERT INTO queue VALUES (0, \"PiggyJingles\", 9999, 1020, 70918372, \"normal\");");
 
 app.post('/join', function(req, res) {
-	var queryString = "INSERT INTO queue VALUES (0,
+	dataQuery("INSERT INTO queue VALUES (0,"
 		+ "\"" + req.body.name + "\"" + "," 
 		+ parseInt(req.body.id) + "," 
 		+ parseInt(req.body.rank) + ","
 		+ parseInt(req.body.placeid) + ","
 		+ "\"" + req.body.type; "\"" + 
-	");";
-	dataQuery(queryString);
+	");";);
 
 	var query = dataQuery("SELECT * FROM queue");
 
