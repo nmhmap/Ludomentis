@@ -99,8 +99,9 @@ setInterval(function() {
 	var response;
 	for (var i = confirmRequests.length - 1; i >= 0; i--) {
 		response = confirmRequests[i].response;
-		if (confirm[confirmRequests[i].request.params.id] != "undefined") {
+		if (confirm[confirmRequests[i].request.params.id] != undefined) {
 			console.log(confirm[confirmRequests[i].request.params.id]);
+			response.setHeader('Content-Type', 'text/plain')
 			response.send(confirm[confirmRequests[i].request.params.id]);
 		//check if request has polled for more than 28 seconds
 		} else if (requests[i].timestamp < expiration) {
