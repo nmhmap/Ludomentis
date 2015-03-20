@@ -150,7 +150,7 @@ app.get('/queue', function(req, res){
 })
 
 app.get('/', function(req, res) {
-	res.sendfile('');
+	res.send('test');
 });
 
 app.listen(port, ipaddress, function() {
