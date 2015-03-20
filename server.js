@@ -108,7 +108,7 @@ setInterval(function() {
 			response.end("");
 		}
 	}
-}, 500);
+}, 750);
 
 app.post('/confirm/accept', function(req, res) {
 	var response = parseInt(req.body.response);
