@@ -20,10 +20,6 @@ var type = app.param("/^\w+$/");
 
 app.use(express.bodyParser());
 
-//app.use('/css', express.static(__dirname + '/css'));
-//app.use('/img', express.static(__dirname + '/img'));
-
-//Joining queue
 app.post('/join', function(req, res) {
 
 	//accept - 0: awaiting
@@ -31,7 +27,6 @@ app.post('/join', function(req, res) {
 	//accept - 2: accepted
 	queue.push({ name : req.body.name, id : req.body.id, rank : req.body.rank, type : req.body.type, confirm : false, accept : 0, placeid : req.body.placeid });
 
-	//Removes from queue and adds to confirmation
 	for (p1 = 0; p1 < queue.length; p1++) {
 		for (p2 = 0; p2 < queue.length; p2 ++) {
 			var player1 = queue[p1];
@@ -47,7 +42,6 @@ app.post('/join', function(req, res) {
 	res.send("added");
 });
 
-//leaving queue
 app.get('/leave/:id', function(req, res) {
 	req.params.id = parseInt(req.params.id);
 	for (player = 0; player < queue.length; player++) {
@@ -62,7 +56,6 @@ app.get('/leave/:id', function(req, res) {
 	res.send("removed");
 });
 
-//add to confirm queue
 app.get('/confirm/add/:id', function(req, res) {
 	req.params.id = parseInt(req.params.id);
 	var c         = confirm[req.params.id];
@@ -80,14 +73,12 @@ app.get('/confirm/add/:id', function(req, res) {
 	res.send("");
 });
 
-//remove from confirmation queue
 app.get('/confirm/remove/:id', function(req, res) {
 	confirm[confirm[req.params.id].players[0].id] = null;
 	confirm[confirm[req.params.id].players[1].id] = null;
 	res.send("");
 });
 
-//return confirm queue for :id
 app.get('/confirm/:id', function(req, res) {
 	res.send(confirm[parseInt(req.params.id)] || []);
 });
@@ -102,13 +93,11 @@ app.post('/confirm/accept', function(req, res) {
 	}
 })
 
-//remove arena
 app.get('/arenas/remove/:id', function(req, res) {
 	arenas[parseInt(req.params.id)] = null;
 	res.send("");
 });
 
-//return id information
 app.get('/arenas/:id', function(req, res) {
 	res.send(arenas[parseInt(req.params.id)]);
 });
@@ -117,9 +106,8 @@ app.get('/queue', function(req, res){
 	res.send(queue);
 })
 
-//root page
 app.get('/', function(req, res) {
-	res.sendfile('index.html');
+	res.sendfile('');
 });
 
 app.listen(port, ipaddress, function() {
