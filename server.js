@@ -22,7 +22,7 @@ app.use(express.bodyParser());
 app.post('/join', function(req, res) {
 	queue.push({
 		name 	: req.body.name,
-		id 	: parseInt(req.body.id),
+		id 		: parseInt(req.body.id),
 		placeid : parseInt(req.body.placeid),
 		rank 	: parseInt(req.body.rank),
 		type 	: req.body.type
@@ -50,7 +50,6 @@ app.get('/leave/:id', function(req, res) {
 	req.params.id = parseInt(req.params.id);
 	for (player = 0; player < queue.length; player++) {
 		if (queue[player].id == req.params.id) {
-			//console.log(queue[player].name + " has left(queue/" + queue[player].type + ")");
 			queue.splice(player, 1);
 			counter -= 1;
 			break;
@@ -72,7 +71,6 @@ app.get('/confirm/add/:id', function(req, res) {
 
 	if (c.players[0].confirm && c.players[1].confirm) {
 		arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type, set : "Players2" };
-		//var other	 = (confirm[req.params.id].players[0].id == req.params.id && confirm[req.params.id].players[1]) || (confirm[req.params.id].players[1].id == req.params.id && confirm[req.params.id].players[0]);
 	}
 	res.send("");
 });
@@ -108,7 +106,7 @@ setInterval(function() {
 			response.end("");
 		}
 	}
-}, 750);
+}, 500);
 
 app.post('/confirm/accept', function(req, res) {
 	var response = parseInt(req.body.response);
