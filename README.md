@@ -3,7 +3,7 @@
 
 ## Card
 
-Minion:
+#### Minion:
 ```
 {
 	"name" : "",
@@ -20,7 +20,7 @@ Minion:
 }
 ```
 
-Weapon:
+#### Weapon:
 ```
 {
 	"name" : "",
@@ -34,7 +34,7 @@ Weapon:
 }
 ```
 
-Ability:
+#### Ability:
 ```
 {
 	"name" : "",
