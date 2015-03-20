@@ -104,6 +104,8 @@ setInterval(function() {
 			//response.setHeader('Content-Type', 'text/plain')
 			response.write(JSON.stringify(confirm[confirmRequests[i].request.params.id]));
 			response.end();
+			confirmRequests.splice(i, 1);
+			i++;
 		//check if request has polled for more than 28 seconds
 		} else if (confirmRequests[i].timestamp < expiration) {
 			response.end("");
