@@ -49,6 +49,7 @@
 }
 ```
 
+```
 name = The card's defining name
 rarity = what image of the card will be used
 image = the card's inner image
@@ -60,6 +61,8 @@ ready = when the ability is fired
 ... = other arguments to the ability (See Ability guidelines)
 uses = how many times the weapon will be available or ready for use
 description = the inner text describing the ability
+```
+
 
 
 
