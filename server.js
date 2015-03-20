@@ -72,7 +72,7 @@ app.get('/confirm/add/:id', function(req, res) {
 
 	if (c.players[0].confirm && c.players[1].confirm) {
 		arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type, set : "Players2" };
-		var other         = (confirm[req.params.id].players[0].id == req.params.id && confirm[req.params.id].players[1]) || (confirm[req.params.id].players[1].id == req.params.id && confirm[req.params.id].players[0]);
+		//var other	 = (confirm[req.params.id].players[0].id == req.params.id && confirm[req.params.id].players[1]) || (confirm[req.params.id].players[1].id == req.params.id && confirm[req.params.id].players[0]);
 	}
 	res.send("");
 });
@@ -100,6 +100,7 @@ setInterval(function() {
 	for (var i = confirmRequests.length - 1; i >= 0; i--) {
 		response = confirmRequests[i].response;
 		if (confirm[confirmRequests[i].request.params.id] != "undefined") {
+			console.log(confirm[confirmRequests[i].request.params.id]);
 			response.end(confirm[confirmRequests[i].request.params.id]);
 		//check if request has polled for more than 28 seconds
 		} else if (requests[i].timestamp < expiration) {
