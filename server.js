@@ -20,6 +20,7 @@ var type = app.param("/^\w+$/");
 app.use(express.bodyParser());
 
 app.post('/join', function(req, res) {
+	console.log(req.body);
 	var found = false;
 	for (i = 0; i < queue.length; i ++) {
 		if (queue[i].id == parseInt(req.body.id)) {
