@@ -6,46 +6,59 @@
 #### Minion:
 ```
 {
-	"name" : "",
-	"rarity" : "",
-	"image" : 1,
-	"attack" : 1,
-	"defense" : 1,
-	"energy" : 1,
-	"ability" : {
-		"ready" : "",
+	name 	= "",
+	rarity 	= "",
+	image 	= 1,
+	attack 	= 1,
+	defense = 1,
+	energy 	= 1,
+	ability = {
+		ready = "",
 		...
 	},
-	"description" : ""
+	description = ""
 }
 ```
 
 #### Weapon:
 ```
 {
-	"name" : "",
-	"rarity" : "",
-	"image" : 1,
-	"attack" : 1, --optional
-	"defense" : 1, --optional
-	"energy" : 1,
-	"uses" : 1,
-	"description" : ""
+	name 	= "";
+	rarity 	= "";
+	image 	= 1;
+	attack 	= 1;	--optional
+	defense = 1;	--optional
+	energy 	= 1;
+	uses 	= 1;
+	description = ""
+}
+```
+
+#### Conduit:
+```
+{
+	name 		= "Conduit";
+	rarity		= "Common";
+	image		= 1;
+	type		= "conduit";
+	conduitType 	= "Energy";
+	energy 		= 5;
+	description	= "Conduit that charges 5 energy per turn";
 }
 ```
 
 #### Ability:
 ```
 {
-	"name" : "",
-	"rarity" : "",
-	"image" : 1,
-	"energy" : 1,
-	"ability" : {
-		"ready" : "",
+	name	 = "";
+	rarity	 = "";
+	image	 = 1;
+	energy	 = 1;
+	ability  = {
+		ready : "";
 		...
-	},
-	"description" : ""
+	};
+	description : "";
 }
 ```
 
@@ -62,7 +75,6 @@ ready = when the ability is fired
 uses = how many times the weapon will be available or ready for use
 description = the inner text describing the ability
 ```
-
 
 
 
