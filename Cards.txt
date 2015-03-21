@@ -1,13 +1,47 @@
 {
-{
-	name 		= "Conduit";
-	rarity		= "Common";
-	image		= 1;
-	type		= "conduit";
-	conduitType 	= "Energy";
-	energy 		= 5;
-	description	= "Conduit that charges 5 energy per turn";
+	{
+		name 		= "Conduit";
+		rarity		= "Common";
+		image		= 1;
+		type		= "conduit";
+		conduitType = "energy";
+		energy 		= 5;
+		description	= "Conduit that charges 5 energy per turn";
+	},
+	{
+		name 		= "Greater Conduit";
+		rarity		= "Uncommon";
+		image		= 1;
+		type		= "conduit";
+		conduitType = "energy";
+		energy 		= 10;
+		description	= "Conduit that charges 10 energy per turn";
+	},
+	{
+		name 		= "Rare Conduit";
+		rarity		= "Epic";
+		image		= 1;
+		type		= "conduit";
+		conduitType = "energy";
+		energy 		= 15;
+		description	= "Conduit that charges 15 energy per turn";
+	},
+	{
+		name 		= "Epic Conduit";
+		rarity		= "Epic";
+		image		= 1;
+		type		= "conduit";
+		conduitType = "energy";
+		energy 		= 20;
+		description	= "Conduit that charges 20 energy per turn";
+	},
+	{
+		name 		= "Legendary Conduit";
+		rarity		= "Common";
+		image		= 1;
+		type		= "conduit";
+		conduitType = "energy";
+		energy 		= 25;
+		description	= "Conduit that charges 25 energy per turn";
+	},
 }
-}
-	
-	
