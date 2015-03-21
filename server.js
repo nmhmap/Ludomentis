@@ -64,7 +64,6 @@ app.get('/leave/:id', function(req, res) {
 	for (player = 0; player < queue.length; player++) {
 		if (queue[player].id == req.params.id) {
 			queue.splice(player, 1);
-			counter -= 1;
 			break;
 		}
 	}
