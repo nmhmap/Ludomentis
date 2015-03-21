@@ -344,11 +344,10 @@
 	},
 	{
 		"name" : "Greater Conduit",
-		"rarity" : "Uncommon",
+		"rarity" : "uncommon",
 		"type" : "conduit",
 		"image" : 1,
-		"attack" : 0,
-		"defense" : 0,
+		"conduitType" : "energy",
 		"energy" : 10,
 		"description" : "A conduit that charges 10 energy per turn"
 	},
@@ -357,6 +356,7 @@
 		"rarity" : "Common",
 		"type" : "conduit",
 		"image" : 1,
+		"conduitType" : "energy",
 		"energy" : 5,
 		"description" : "A conduit that charges 5 energy per turn"
 	}
