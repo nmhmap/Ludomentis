@@ -45,15 +45,15 @@
 		description	= "Conduit that charges 25 energy per turn";
 	},
 	{
-	    name    = "Nandym",
-	    rarity  = "Legendary",
-	    image   = 1,
-	    attack  = 5,
-	    defense = 5,
-	    energy  = 25,
-	    ability = {
-	        ready = "played",
-	    },
-	    description = ""
+		name    = "Nandym",
+		rarity  = "Legendary",
+		image   = 1,
+		attack  = 5,
+		defense = 5,
+		energy  = 25,
+		ability = {
+			ready = "played",
+		},
+		description = ""
 	}
 }
