@@ -20,7 +20,6 @@ var type = app.param("/^\w+$/");
 app.use(express.bodyParser());
 
 app.post('/join', function(req, res) {
-	console.log(req.body);
 	var found = false;
 	for (i = 0; i < queue.length; i ++) {
 		if (queue[i].id == parseInt(req.body.id)) {
@@ -147,7 +146,8 @@ app.get('/arenas/:id', function(req, res) {
 	res.send(arenas[parseInt(req.params.id)]);
 });
 
-app.get('/queue', function(req, res){
+app.get('/queue', function(req, res) {
+	console.log(req.body);
 	res.send(queue);
 })
 
