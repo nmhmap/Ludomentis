@@ -147,7 +147,7 @@ app.get('/arenas/:id', function(req, res) {
 });
 
 app.get('/queue', function(req, res) {
-	console.log(req.body);
+	console.log(req);
 	res.send(queue);
 })
 
