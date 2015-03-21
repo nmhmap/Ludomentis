@@ -63,5 +63,6 @@
 		attack	= 1,
 		defense	= 1,
 		energy	= 5,
+		special = "Taunt",
 	}
 }
