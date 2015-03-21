@@ -55,5 +55,13 @@
 			ready = "played",
 		},
 		description = ""
+	},
+	{
+		name	= "Troll",
+		rarity	= "Common",
+		image	= 1,
+		attack	= 1,
+		defense	= 1,
+		energy	= 5,
 	}
 }
