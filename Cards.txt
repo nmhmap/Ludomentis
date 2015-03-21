@@ -1,6 +1,6 @@
 {
 {
-	name 		= "Conduit;
+	name 		= "Conduit";
 	rarity		= "Common";
 	image		= 1;
 	type		= "conduit";
