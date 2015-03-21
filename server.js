@@ -69,6 +69,12 @@ app.get('/leave/:id', function(req, res) {
 		}
 	}
 
+	for (i = 0; i < confirmRequests.length; i ++) {
+		if (confirmRequests[i].request.params.id == req.params.id) {
+			confirmRequests[i].response.end('left');
+		}
+	}
+
 	res.send("removed");
 });
 
@@ -85,6 +91,7 @@ app.get('/confirm/add/:id', function(req, res) {
 	if (c.players[0].confirm && c.players[1].confirm) {
 		arenas[c.id] = { players : [ c.players[0], c.players[1] ], arenaid : c.id, type : c.type, set : "Players2" };
 	}
+
 	res.end("");
 });
 
