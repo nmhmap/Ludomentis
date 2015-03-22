@@ -1,0 +1,7 @@
+1: Conduit
+2: Greater Conduit
+3: Rare Conduit
+4: Epic Conduit
+5: Legendary Conduit
+6: Nandym
+7: Troll
