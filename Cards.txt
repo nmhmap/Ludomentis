@@ -64,5 +64,23 @@
 		defense	= 1,
 		energy	= 5,
 		special = "Taunt",
+	},
+	{
+		name	= "Sheeptard the Sheepking",
+		rarity	= "Ultra-rare,
+		image	= 1,
+		attack	= 69,
+		defense	= 5,
+		energy	= 9,
+		special = "Spooning",
+	},
+	{
+		name	= "Unmovable Turtle",
+		rarity	= "Common",
+		image	= 1,
+		attack	= 1,
+		defense	= 10,
+		energy	= 9,
+		special = "Defense",
 	}
 }
